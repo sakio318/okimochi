@@ -21,7 +21,7 @@
 *自分へのご褒美
 
 ## 設計書
-<...>
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1STc7iMKOB4MzEzUhAMUqDGcLvIZed7gVTJcpDnETZ9E/edit#gid=0

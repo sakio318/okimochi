@@ -21,6 +21,7 @@
 *自分へのご褒美
 
 ## 設計書
+*WBSシート　https://docs.google.com/spreadsheets/d/1KsfYXngi_1H4orXHen1Qpg_ydBb6x5C1VNHHv7EGp98/edit?usp=sharing
 
 
 ## チャレンジ要素一覧

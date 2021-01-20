@@ -4,12 +4,49 @@
     <title>Okimochi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <heder>
+      <nav class="navbar navbar-expand navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href=" / ">おきもち</a>
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '全ての投稿', items_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '気になる一覧', class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ユーザ一覧',  class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_user_session_path, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'ご利用方法',about_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  '新規会員登録',new_user_registration_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </nav>
+
+    </heder>
+
+
     <%= yield %>
   </body>
 </html>

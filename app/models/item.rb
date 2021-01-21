@@ -6,5 +6,6 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :situations, dependent: :destroy
+  has_many :images, dependent: :destroy
 end
 

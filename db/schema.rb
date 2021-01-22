@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_071249) do
+ActiveRecord::Schema.define(version: 2021_01_22_023211) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_071249) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
+    t.integer "category", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_01_20_071249) do
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "item_situations", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "situation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_situations_on_item_id"
+    t.index ["situation_id"], name: "index_item_situations_on_situation_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -62,8 +71,6 @@ ActiveRecord::Schema.define(version: 2021_01_20_071249) do
 
   create_table "situations", force: :cascade do |t|
     t.string "situation", null: false
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

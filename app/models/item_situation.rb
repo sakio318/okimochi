@@ -1,0 +1,4 @@
+class ItemSituation < ApplicationRecord
+  belongs_to :item
+  belongs_to :situation
+end

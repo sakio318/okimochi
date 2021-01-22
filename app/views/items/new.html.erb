@@ -1,2 +1,20 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h4>新規投稿</h4>
+<%= form_with model: @new_item, local:true do |f| %>
+<h6>商品名</h6>
+<%= f.text_field :name %>
+<h6>お店の名前</h6>
+<%= f.text_field :shop_name %>
+<h6>包装</h6>
+<%= f.radio_button :packing, "true" %>個包装
+<%= f.radio_button :packing, "false" %>同梱
+<h6>この商品について</h6>
+<%= f.text_area :introduction, size: "30x5" %>
+<h6>ジャンル</h6>
+<%#= f.select　:category, Genre.category.keys.to_a,{prompt: "ジャンルを選択してください"} %>
+<h6>シチュエーション</h6>
+<%= form.collection_check_boxes :item_situations_situation_ids, Situation.all, :id, :situation %>
+
+<h6>画像</h6>
+<%= f.submit '投稿する' %>
+<% end %>
+

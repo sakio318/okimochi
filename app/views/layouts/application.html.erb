@@ -23,7 +23,7 @@
                 <%= link_to '気になる一覧', class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to 'ユーザ一覧',  class: "nav-link" %>
+                <%= link_to 'ユーザ一覧', users_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
@@ -45,8 +45,20 @@
       </nav>
 
     </heder>
+    <body>
+      <%= yield %>
+    </body>
+     <footer>
+      <nav class="navbar navbar-expand-lg navbar-info">
+        <div class="container d-flex justify-content-center">
+          <div class="row">
+            <div class>
+              <p class="mt-4">Copyright ©Okimochi. All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </footer>
 
-
-    <%= yield %>
   </body>
 </html>

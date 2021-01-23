@@ -1,2 +1,25 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 offset-2">
+      <h4>ユーザ情報編集画面</h4>
+      <%= form_with model: @user, url: user_path, local:true do |f| %>
+      <ul>
+        <li>
+          <%= attachment_image_tag @user, :image, fallback: "person.jpg",size: "60x60" %>
+          <label for="inputImage">ヘッダー画像</label>
+          <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+        </li>
+        <li>
+          <h6>アカウント名</h6>
+          <%= f.text_field :name %>
+        </li>
+        <li>
+          <h6>自己紹介100文字以内）</h6>
+          <%= f.text_area :introduction, size: "40x4" %>
+        </li>
+        <li><%= f.submit '編集する' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,14 @@ class ItemsController < ApplicationController
     @new_item = Item.new(item_params)
     @new_item.user_id = current_user.id
     @new_item.save
+      item_params.situation_ids.each do |sid|
+        @item_situation = ItemSituation.new({
+          situation_id: sid,
+          item_id: @new_item.id
+        })
+        @item_situation.save
+      end
+    # binding.pry
     redirect_to user_path(current_user)
   end
 

@@ -1,5 +1,5 @@
 <h4>新規投稿</h4>
-<%= form_with model: @new_item, url: items_path,method: :post, local:true do |f| %>
+<%= form_with model: @new_item, local:true do |f| %>
 <h6>商品名</h6>
 <%= f.text_field :name %>
 <h6>お店の名前</h6>
@@ -10,7 +10,8 @@
 <h6>この商品について</h6>
 <%= f.text_area :introduction, size: "30x5" %>
 <h6>ジャンル</h6>
-<%= f.select :genre_id, Genre.categories.keys{} %>
+<%= f.select :genre_id, Genre.genres %>
+
 <h6>シチュエーション</h6>
 <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
 

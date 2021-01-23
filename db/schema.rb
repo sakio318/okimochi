@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_023211) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "category", default: 0, null: false
+    t.string "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

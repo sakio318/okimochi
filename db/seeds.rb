@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Situation.create!(
-  [ 
+  [
     { situation: 'お手土産'},
     { situation: 'お歳暮'},
     { situation: '父の日'},
@@ -20,3 +20,17 @@ Situation.create!(
     { situation: '親戚に送る'}
   ]
   )
+
+  Genre.create!(
+    [
+    { genre: '洋菓子'},
+    { genre: '和菓子'},
+    { genre: 'お肉'},
+    { genre: 'お魚'},
+    { genre: 'お惣菜'},
+    { genre: '乾物'},
+    { genre: '果物'},
+    { genre: 'お酒'},
+    { genre: 'その他'}
+    ]
+    )

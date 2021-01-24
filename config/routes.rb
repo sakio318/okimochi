@@ -15,6 +15,4 @@ Rails.application.routes.draw do
   resources :genres, only:[:create, :destroy]
   resources :images, only:[:create, :update, :destroy]
   resources :situations, only:[:create,:destroy]
-
-
 end

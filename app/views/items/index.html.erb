@@ -16,6 +16,7 @@
               <tr>
                 <td>画像</td>
                 <td>製品名</td>
+                <td>
                   <%= link_to item_path(item.id) do %>
                    <%= item.name %>
                   <% end %>
@@ -24,7 +25,7 @@
                 <td><%= item.shop_name %></td>
                 <td>気になる</td>
                 <td>レヴュー</td>
-                <td>包装</td>
+                <td>包装
                   <% if item.packing %>
                       個包装
                   <% elsif %>

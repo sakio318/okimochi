@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
     @new_item = Item.new(item_params)
     @new_item.user_id = current_user.id
     @new_item.save
-      item_params.situation_ids.each do |sid|
+      item_params[:situation_ids].each do |sid|
         @item_situation = ItemSituation.new({
           situation_id: sid,
           item_id: @new_item.id
@@ -40,6 +41,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name,:shop_name,:url,:packing,
-    :introduction,:genre_id, { situation_ids:[] }, images_attributes:[:image])
+    :introduction,:genre_id, images_attributes:[:image], situation_ids:[] )
   end
 end

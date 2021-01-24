@@ -4,13 +4,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
   end
 
   def new
     @new_item = Item.new
     @genres = Genre.all
-    @new_item.images.new
+    @new_item.images.build
 
   end
 
@@ -25,22 +25,26 @@ class ItemsController < ApplicationController
         })
         @item_situation.save
       end
-    # binding.pry
+
     redirect_to user_path(current_user)
   end
 
   def edit
+    @item = Item.find_by(id: params[:id])
   end
 
   def update
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_path
   end
 
   private
   def item_params
     params.require(:item).permit(:name,:shop_name,:url,:packing,
-    :introduction,:genre_id, images_attributes:[:image], situation_ids:[] )
+    :introduction,:genre_id, images_images:[], situation_ids:[] )
   end
 end

@@ -16,6 +16,7 @@
 <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
 
 <h6>画像</h6>
+<%= f.attachment_field :images_images, multiple: true %>
 <%= f.submit '投稿する' %>
 <% end %>
 

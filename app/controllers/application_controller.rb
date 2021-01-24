@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user
-      flash[:notice] = "ログインに聖光学院しました"
+      flash[:notice] = "ログインに成功しました"
       user_path(current_user)
     else
       flash[:notice] = "新規会員登録完了しました"

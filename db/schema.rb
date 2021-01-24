@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2021_01_22_023211) do
   end
 
   create_table "item_situations", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "situation_id"
+    t.integer "item_id", null: false
+    t.integer "situation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_situations_on_item_id"

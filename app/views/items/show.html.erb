@@ -1,2 +1,29 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h6>サイドバー</h6>
+    </div>
+    <div class="col-8 offset-1">
+      <h4>おきもちの詳細情報</h4>
+
+      <h6>商品名</h6>
+        <%= @item.name %>
+      <h6>お店の名前</h6>
+        <%= @item.shop_name %>
+      <h6>包装</h6>
+        <% if @item.packing %>
+            個包装
+        <% elsif %>
+            同梱
+        <% end %>
+      <h6>この商品について</h6>
+        <%= @item.introduction %>
+      <h6>ジャンル</h6>
+        <%= @item.genre.genre %>
+      <h6>シチュエーション</h6>
+        <%= @item.item_situation_ids.situation %>
+      <h6>画像</h6>
+
+      </div>
+  </div>
+</div>

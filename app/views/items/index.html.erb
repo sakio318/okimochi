@@ -32,7 +32,22 @@
                       同梱
                   <% end %>
                 </td>
-              </tr>
+                <td>
+                  <% if item.favorited_by?(current_user) %>
+                    <P>
+                      <%= link_to  item_favorites_path(item),method: :delete do %>
+                        💛<%= item.favorites.count %>気になる
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to  item_favorites_path(item), method: :post do %>
+                        ♡<%= item.favorites.count %>気になる
+                      <% end %>
+                    </p>
+                    <% end %>
+                            </td>
+                          </tr>
             <% end %>
       </table>
       <%= paginate @items %>

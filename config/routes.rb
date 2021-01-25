@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index,:show,:edit,:update]
 
   resources :items do
-    resources :favorites, only:[:index,:create,:destroy]
+    resource :favorites, only:[:index,:create,:destroy]
     resources :comments, only:[:create,:destroy]
     resources :reviews, only:[:create,:destroy]
     resources :item_situations, only:[:create,:destroy]

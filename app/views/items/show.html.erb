@@ -23,8 +23,8 @@
       <h6>シチュエーション</h6>
         <%#= @item.item_situation_ids.situation %>
       <h6>画像</h6>
-        <% if @item.images.present? %>
-          <% @item.images.each do |image| %>
+        <% if @item.post_images.present? %>
+          <% @item.post_images.each do |image| %>
            <%= attachment_image_tag image, :photo, size: "200x200" %>
           <% end %>
         <% end %>

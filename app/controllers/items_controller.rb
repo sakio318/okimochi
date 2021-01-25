@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   def new
     @new_item = Item.new
     @genres = Genre.all
-    @new_item.images.build
+    @new_item.post_images.build
 
   end
 
@@ -45,6 +45,6 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name,:shop_name,:url,:packing,
-    :introduction,:genre_id, images_images:[], situation_ids:[] )
+    :introduction,:genre_id, post_images_photos:[], situation_ids:[] )
   end
 end

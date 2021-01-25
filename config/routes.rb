@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   resources :users, only:[:index,:show,:edit,:update]
 
   resources :items do
-    resources:favorites, only:[:index,:create,:destroy]
-    resources:comments, only:[:create,:destroy]
-    resources:reviews, only:[:create,:destroy]
-    resources:item_situations, only:[:create,:destroy]
+    resources :favorites, only:[:index,:create,:destroy]
+    resources :comments, only:[:create,:destroy]
+    resources :reviews, only:[:create,:destroy]
+    resources :item_situations, only:[:create,:destroy]
     resources :situations, only:[:create,:destroy]
-    resources :images, only:[:create, :update, :destroy]
+    resources :post_images, only:[:create, :update, :destroy]
   end
 
   resources :genres, only:[:create, :destroy]
-  # resources :images, only:[:create, :update, :destroy]
 end

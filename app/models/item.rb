@@ -7,9 +7,9 @@ class Item < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :item_situations, dependent: :destroy
   has_many :situations, dependent: :destroy, through: :item_situations
-  has_many :images, dependent: :destroy
+  has_many :post_images, dependent: :destroy
 
   accepts_nested_attributes_for :item_situations, allow_destroy: true
-  accepts_attachments_for :images, attachment: :image
+  accepts_attachments_for :post_images, attachment: :photo
 end
 

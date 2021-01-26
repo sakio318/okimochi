@@ -10,7 +10,7 @@
 <h6>この商品について</h6>
 <%= f.text_area :introduction, size: "30x5" %>
 <h6>ジャンル</h6>
-<%= f.collection_select(:genre_id, @genres, :id, :genre) %>
+<%= f.collection_select(:genre_id, @genres, :id, :name) %>
 
 <h6>シチュエーション</h6>
 <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>

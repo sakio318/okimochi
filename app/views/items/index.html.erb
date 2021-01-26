@@ -14,7 +14,13 @@
       <table class="table table-striped">
           <% @items.each do |item| %>
               <tr>
-                <td>画像</td>
+                <td>画像
+                <% if item.post_images.present? %>
+                  <% item.post_images.first(1).each do |image| %>
+                    <%= attachment_image_tag image, :photo, size: "200x200" %>
+                  <% end %>
+                <% end %>
+                </td>
                 <td>製品名</td>
                 <td>
                   <%= link_to item_path(item) do %>

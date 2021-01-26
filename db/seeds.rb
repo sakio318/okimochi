@@ -23,14 +23,14 @@ Situation.create!(
 
   Genre.create!(
     [
-    { genre: '洋菓子'},
-    { genre: '和菓子'},
-    { genre: 'お肉'},
-    { genre: 'お魚'},
-    { genre: 'お惣菜'},
-    { genre: '乾物'},
-    { genre: '果物'},
-    { genre: 'お酒'},
-    { genre: 'その他'}
+    { name: '洋菓子'},
+    { name: '和菓子'},
+    { name: 'お肉'},
+    { name: 'お魚'},
+    { name: 'お惣菜'},
+    { name: '乾物'},
+    { name: '果物'},
+    { name: 'お酒'},
+    { name: 'その他'}
     ]
     )

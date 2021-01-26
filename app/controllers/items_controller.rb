@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
+    @comment = Comment.new
+    @review = Review.new
   end
 
   def new
@@ -41,6 +43,7 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
+
 
   private
   def item_params

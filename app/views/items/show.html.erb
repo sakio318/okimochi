@@ -19,7 +19,7 @@
       <h6>この商品について</h6>
         <%= @item.introduction %>
       <h6>ジャンル</h6>
-        <%= @item.genre.genre %>
+        <%= @item.genre.name %>
       <h6>シチュエーション</h6>
         <%#= @item.item_situation_ids.situation %>
       <h6>画像</h6>
@@ -43,6 +43,47 @@
         <% end %>
         <%= link_to '編集', edit_item_path(@item.id) %>
         <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <!--ここから評価-->
+        <% form_with(model: [@item, @review], method: :post) do |f| %>
+        <div class="form-group row" id="star">
+          <%= f.label :rate,'評価',class:'col-md-3 col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
+
+        <!-- 評価javascript -->
+        <script>
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'post[rate]',
+            half: true,
+          });
+          </script>
+          <%= f.submit '投稿する', class:"btn btn-success" %>
+        <% end %>
+
+
+        <div class="comments">
+          <p>コメント件数：<%= @item.comments.count %></p>
+          <% @item.comments.each do |comment| %>
+            <%= comment.user.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <%= comment.body %>
+            <% if comment.user == current_user %>
+              <div class="comment-delete">
+                <%= link_to "削除",  item_comment_path(comment.item,comment), method: :delete %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="new-comment">
+          <%= form_with(model:[@item, @comment], local: true) do |f| %>
+            <%= f.text_area :body,placeholder: "こちらにコメントをお書きください", size: "30x3" %>
+            <%= f.submit '送信する' %>
+          <% end %>
+        </div>
       </div>
   </div>
 </div>

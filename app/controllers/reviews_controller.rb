@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
     review.item_id = item.id
     review.save
     redirect_to item_path(item)
-
   end
 
   def destroy
@@ -19,5 +18,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:rate)
   end
-end
 end

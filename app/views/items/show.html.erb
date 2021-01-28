@@ -1,46 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <h6>サイドバー</h6>
+    <div class="col-lg-3">
+      <%= render 'users/sidebar', user:@user %>
     </div>
-    <div class="col-8 offset-1">
+    <div class="col-lg-8">
       <h4>おきもちの詳細情報</h4>
+      <%= render 'favo', item:@item %>
+      <table  class="table">
+        <tr><td><h6>商品名</h6></td><td><%= @item.name %></td></tr>
+        <tr><td><h6>お店の名前</h6></td><td><%= @item.shop_name %></td></tr>
+        <tr>
+          <td><h6>包装</h6></td>
+          <td><% if @item.packing %>
+              個包装
+          <% elsif %>
+              同梱
+          <% end %>
+        </td></tr>
+        <tr><td><h6>この商品について</h6></td><td><%= @item.introduction %></td></tr>
+        <tr><td><h6>ジャンル</h6></td><td><%= @item.genre.name %></td></tr>
+        <tr><td><h6>シチュエーション</h6></td><td><%#= @item.item_situation_ids.situation %></td></tr>
+        <tr><td>
+          <h6>画像</h6>
+          <% if @item.post_images.present? %>
+            <% @item.post_images.each do |image| %>
+             <%= attachment_image_tag image, :photo, size: "200x200" %>
+            <% end %>
+          <% end %>
+        </td></tr>
 
-      <h6>商品名</h6>
-        <%= @item.name %>
-      <h6>お店の名前</h6>
-        <%= @item.shop_name %>
-      <h6>包装</h6>
-        <% if @item.packing %>
-            個包装
-        <% elsif %>
-            同梱
-        <% end %>
-      <h6>この商品について</h6>
-        <%= @item.introduction %>
-      <h6>ジャンル</h6>
-        <%= @item.genre.name %>
-      <h6>シチュエーション</h6>
-        <%#= @item.item_situation_ids.situation %>
-      <h6>画像</h6>
-        <% if @item.post_images.present? %>
-          <% @item.post_images.each do |image| %>
-           <%= attachment_image_tag image, :photo, size: "200x200" %>
-          <% end %>
-        <% end %>
-        <% if @item.favorited_by?(current_user) %>
-        <P>
-          <%= link_to  item_favorites_path(@item),method: :delete do %>
-            💛<%= @item.favorites.count %>気になる
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to  item_favorites_path(@item), method: :post do %>
-            ♡<%= @item.favorites.count %>気になる
-          <% end %>
-        </p>
-        <% end %>
+        </table>
         <%= link_to '編集', edit_item_path(@item.id) %>
         <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } %>
 <!--ここから評価-->

@@ -16,3 +16,20 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+#container{
+  height: 300px;
+  width: 600px;
+}
+.image1 {
+  background-image: url(topimage1.jpg);
+}
+.image2 {
+  background-image: url(topimage2.jpg);
+}
+.image3 {
+  background-image: url(topimage3.jpg);
+}
+.image4 {
+  background-image: url(topimage4.jpg);
+}

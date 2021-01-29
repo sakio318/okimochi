@@ -17,10 +17,10 @@
         <%= f.text_area :introduction, size: "30x5" %>
         <h6>ジャンル</h6>
         <%= f.collection_select(:genre_id, @genres, :id, :name) %>
-        
+
         <h6>シチュエーション</h6>
         <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
-        
+
         <h6>画像</h6>
         <%= f.attachment_field :post_images_photos, multiple: true %>
         <%= f.submit '投稿する' %>

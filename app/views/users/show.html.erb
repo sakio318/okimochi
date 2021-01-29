@@ -1,10 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= render 'sidebar', user:@user %>
+      <h4>マイページ</h4>
+      <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %></div>
+      <div>
+        <h6>お名前</h6>
+        <%= @user.name %>
+      </div>
+      <div>
+        <h6>自己紹介</h6>
+        <%= @user.introduction %>
+      </div>
+      <% if @user.id == current_user.id %>
+          <%= link_to '編集', edit_user_path(@user.id), class:"btn btn-outline-success" %>
+      <% end %>
     </div>
-    <div class="col-lg-7 offset-2">
-      <h4>自分の投稿一覧</h4>
+      <div class="col-lg-9">
+      <!--自分の投稿一覧レンダリング-->
+      <%= render 'items/index', items:@items %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

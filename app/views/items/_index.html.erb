@@ -1,0 +1,57 @@
+<% items.each do |item| %>
+          <div class="flex-container">
+            <div class="row">
+            <div class="m-2 col-lg-3">
+              <% if item.post_images.present? %>
+                <% item.post_images.first(1).each do |image| %>
+                  <%= attachment_image_tag image, :photo, size: "150x150" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class"col-lg-6">
+            <div class="flex-column">
+                <div class="row">
+                  <h6 class="mx-1">製品名</h6>
+                  <%= link_to item_path(item) do %>
+                  <strong><%= item.name %></strong>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <h6 class="mx-1">販売店名</h6>
+                    <strong><%= item.shop_name %></strong>
+                </div>
+                <div class="row">
+                  <i class="mx-1 fas fa-heart"></i>
+                  <%= item.favorites.count %>
+                </div>
+                <div class="row">
+                  レヴュー
+                  <div id="star-rate-<%= item.reviews.ids %>"></div>
+                  <script>
+                  $('#star-rate-#{item.reviews.ids}').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= item.reviews.average(:rate).to_f.round(1) %>,
+                  });
+                  </script>
+                </div>
+                <div class="row">
+                  <h6 class="mx-1">包装</h6>
+                  <strong><% if item.packing %>
+                    個包装
+                  <% elsif %>
+                    同梱
+                  <% end %></strong>
+                </div>
+                <div>
+                  <%= render 'items/favo', item: item %>
+                </div>
+             </div>
+             </div>
+             </div>
+            </div>
+        <% end %>

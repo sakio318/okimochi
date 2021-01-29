@@ -5,23 +5,23 @@
     </div>
     <div class="col-lg-8">
       <h4>おきもちの詳細情報</h4>
+      <!--いいね機能レンダリング-->
       <%= render 'favo', item:@item %>
       <table  class="table">
-        <tr><td><h6>商品名</h6></td><td><%= @item.name %></td></tr>
-        <tr><td><h6>お店の名前</h6></td><td><%= @item.shop_name %></td></tr>
+        <tr><td>商品名</td><td><%= @item.name %></td></tr>
+        <tr><td>お店の名前</td><td><%= @item.shop_name %></td></tr>
         <tr>
-          <td><h6>包装</h6></td>
+          <td>包装</td>
           <td><% if @item.packing %>
               個包装
           <% elsif %>
               同梱
           <% end %>
         </td></tr>
-        <tr><td><h6>この商品について</h6></td><td><%= @item.introduction %></td></tr>
-        <tr><td><h6>ジャンル</h6></td><td><%= @item.genre.name %></td></tr>
-        <tr><td><h6>シチュエーション</h6></td><td><%#= @item.item_situation_ids.situation %></td></tr>
+        <tr><td>この商品について</td><td><%= @item.introduction %></td></tr>
+        <tr><td>ジャンル</td><td><%= @item.genre.name %></td></tr>
+        <tr><td>シチュエーション</td><td><%#= @item.item_situation_ids.situation %></td></tr>
         <tr><td>
-          <h6>画像</h6>
           <% if @item.post_images.present? %>
             <% @item.post_images.each do |image| %>
              <%= attachment_image_tag image, :photo, size: "200x200" %>
@@ -30,8 +30,11 @@
         </td></tr>
 
         </table>
-        <%= link_to '編集', edit_item_path(@item.id) %>
-        <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <% if @item.user_id == current_user.id %>
+          <%= link_to '編集', edit_item_path(@item.id), class:"btn btn-outline-success" %>
+          <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } ,
+            class:"btn btn-outline-danger"%>
+        <% end %>
 <!--ここから評価-->
         <%= form_with(model: [@item, @review], method: :post) do |f| %>
         <div class="form-group row" id="star">
@@ -46,18 +49,18 @@
             starOff:  '<%= asset_path('star-off.png') %>',
             starOn : '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
-            scoreName: 'post[rate]',
+            scoreName: 'review[rate]',
             half: true,
           });
           </script>
           <%= f.submit '投稿する', class:"btn btn-success" %>
         <% end %>
 <!--評価の表示 -->
-        <%= @item.reviews.each do |ir| %>
+        <% @item.reviews.each do |ir| %>
           <%= ir.rate %>点
 
      <!--星評価-->
-         <div id="star-rate-<%= ir.id %>"></div>
+          <div id="star-rate-<%= ir.id %>"></div>
           <script>
           $('#star-rate-<%= ir.id %>').raty({
             size: 36,

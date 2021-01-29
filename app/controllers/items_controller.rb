@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).reverse_order
     @user = User.find(current_user.id)
+    reviews = Review.all
   end
 
   def show

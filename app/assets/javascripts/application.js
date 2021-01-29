@@ -15,5 +15,21 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery.raty.js
+//= require skippr.min.js
 //= require rails-ujs
 //= require activestorage
+
+$(document).ready(function(){
+    $("#topslide").skippr({
+        transition : 'slide',
+        speed : 1000,
+        easing : 'easeOutQuart',
+        navType : 'block',
+        childrenElementType : 'div',
+        arrows : true,
+        autoPlay : true,
+        autoPlayDuration : 3000,
+        keyboardOnAlways : true,
+        hidePrevious : false
+    });
+});

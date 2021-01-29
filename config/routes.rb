@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :post_images, only:[:create, :update, :destroy]
   end
 
-  resources :genres, only:[:create, :destroy]
+get "search" => "items#search"
+
+resources :genres, only:[:create, :destroy]
 
 end

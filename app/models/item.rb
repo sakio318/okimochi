@@ -9,6 +9,14 @@ class Item < ApplicationRecord
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
 
+  def Item.search(search,user_or_item)
+    if user_or_item == "2"
+      Item.where(['name LIKE?',"%#{search}%"])
+    else
+      Item.all
+    end
+  end
+
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

@@ -7,4 +7,12 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   attachment :image
+
+  def User.search(search,user_or_item)
+      if user_or_item == "1"
+        User.where(['name LIKE ?',"%#{search}%"])
+      else
+        User.all
+      end
+  end
 end

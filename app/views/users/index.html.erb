@@ -9,19 +9,5 @@
   </div>
 </div>
 <div class="col-9 offset-2">
-  <table class="table table-striped">
-    <% @users.each do |user| %>
-      <tr>
-        <td>
-          <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %>
-          <%= link_to user_path(user.id) do %>
-          <%= user.name %>
-        </td>
-        <td>
-          <% end %>
-        </td>
-        <td><%= user.introduction %></td>
-      </tr>
-    <% end %>
-  </table>
+  <%= render 'user_index' users:@users %>
 </div>

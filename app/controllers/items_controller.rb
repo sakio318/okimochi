@@ -51,7 +51,14 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
-
+  def search
+    @user_or_item = params[:option]
+    if @user_or_item == "1"
+      @users = User.search(params[:search],@user_or_item)
+    else
+      @items = Item.search(params[:search],@user_or_item)
+    end
+  end
 
   private
   def item_params

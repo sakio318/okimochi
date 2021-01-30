@@ -2,13 +2,14 @@ class ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).reverse_order
     @user = User.find(current_user.id)
-    reviews = Review.all
+    # reviews = Review.all
   end
 
   def show
     @item = Item.find_by(id: params[:id])
     @comment = Comment.new
-    @review = Review.new
+    @comments = @item.comments.includes(:user).reverse_order
+    # @review = Review.new
     @user = User.find(current_user.id)
   end
 

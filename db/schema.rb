@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_092016) do
+ActiveRecord::Schema.define(version: 2021_01_30_061944) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_01_25_092016) do
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rate"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -56,14 +57,6 @@ ActiveRecord::Schema.define(version: 2021_01_25_092016) do
 
   create_table "post_images", force: :cascade do |t|
     t.string "photo_id", null: false
-    t.integer "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.float "rate", null: false
-    t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

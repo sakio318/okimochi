@@ -1,11 +1,13 @@
-<tr id="comments-<%= comment.id %>">
+<% comments.each do |comment| %>
+<div id="comment-<%= comment.id %>">
+
 <p>コメント件数：<%#= comments.count %></p>
       <%= link_to "@#{comment.user.name}", user_path(comment.user_id) %>
       <%= comment.rate %>点
       <%= comment.body %>
-      <% if comments.user == current_user %>
+      <% if comment.user == current_user %>
         <div class="comment-delete">
-          <%= link_to item_comment_path(comments.id,comments.item.id), method: :delete, remote: true do %>
+          <%= link_to item_comment_path(comment.item.id, comment.id), method: :delete, remote: true do %>
             <i class="fas fa-trash" style="color: black;"></i>
           <% end %>
         </div>
@@ -20,8 +22,9 @@
               starHalf: '<%= asset_path('star-half.png') %>',
               half: true,
               readOnly: true,
-              score: <%= comment.rate %>,
+              score: <%= comment.rate %>
           });
         </script>
-</tr>
+</div>
+<% end %>
 

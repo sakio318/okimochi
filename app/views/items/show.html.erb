@@ -37,7 +37,9 @@
         <!--ここからコメント評価フォーム-->
         <%= render 'comments/form', item: @item,comment: @comment %>
         <!--コメント評価の表示 -->
-         <%= render 'comments/comments_area', comments: @comments %>
+        <div id="js-table-comment">
+          <%= render 'comments/comments', comments: @comments %>
+        </div>
 
           </div>
       </div>

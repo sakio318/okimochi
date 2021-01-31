@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
     @comments = @item.comments.includes(:user).reverse_order
     # @review = Review.new
     @user = User.find(current_user.id)
+    @situations = Situation.where(item_id: :@item)
+
   end
 
   def new
@@ -43,7 +45,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(id: params[:id])
-    @item.save
+    @item.update(item_params)
     redirect_to item_path(@item)
   end
 
@@ -52,7 +54,9 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
+
   def search
+    
     @user_or_item = params[:option]
     if @user_or_item == "1"
       @users = User.search(params[:search],@user_or_item)

@@ -26,16 +26,16 @@
                 </div>
                 <div class="row">
                   レヴュー
-                  <div id="star-rate-<%= item.reviews.ids %>"></div>
+                  <div id="star-rate-<%= item.comments.ids %>"></div>
                   <script>
-                  $('#star-rate-#{item.reviews.ids}').raty({
+                  $('#star-rate-#{item.comments.ids}').raty({
                     size: 36,
                     starOff:  '<%= asset_path('star-off.png') %>',
                     starOn : '<%= asset_path('star-on.png') %>',
                     starHalf: '<%= asset_path('star-half.png') %>',
                     half: true,
                     readOnly: true,
-                    score: <%= item.reviews.average(:rate).to_f.round(1) %>,
+                    score: <%= item.comments.average(:rate).to_f.round(1) %>,
                   });
                   </script>
                 </div>

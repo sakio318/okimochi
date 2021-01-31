@@ -1,22 +1,24 @@
 class CommentsController < ApplicationController
   def create
-    item = Item.find(params[:item_id])
-    comment = Comment.new(comment_params)
-    comment.user_id = current_user.id
-    comment.item_id = item.id
-    comment.save
-    redirect_to item_path(item)
+    @item = Item.find(params[:item_id])
+    @comment = @item.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    @comment.item_id = @item.id
+    @comment.save
+    @comments = @item.comments.order(create_at: :desc)
+    render "create"
 
   end
 
   def destroy
-    Comment.find_by(id: params[:id], item_id: params[:item_id]).destroy
-    redirect_to item_path(params[:item_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    render "delete"
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body,:rate,:user_id,:item_id)
   end
 end

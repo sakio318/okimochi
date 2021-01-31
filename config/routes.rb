@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :items do
     resource :favorites, only:[:index,:create,:destroy]
     resources :comments, only:[:create,:destroy]
-    resources :reviews, only:[:create,:destroy]
     resources :item_situations, only:[:create,:destroy]
     resources :situations, only:[:create,:destroy]
     resources :post_images, only:[:create, :update, :destroy]

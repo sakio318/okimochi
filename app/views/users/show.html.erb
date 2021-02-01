@@ -1,24 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-8 offset-2">
       <h4>マイページ</h4>
-      <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %></div>
-      <div>
-        <h6>お名前</h6>
-        <%= @user.name %>
+      <div class="d-flex flex-row">
+        <!--<div class="mx-1">-->
+        <!--<divclass="row"></div>-->
+          <%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %>
+      <div class="d-flex flex-column">
+        <div class="row mx-1">
+          <h6>お名前</h6>
+          <%= @user.name %>
+        </div>
+        <div class="row mx-1">
+          <h6>自己紹介</h6>
+          <%= @user.introduction %>
+        </div>
+        <div class="p-2 bd-highlight">
+          <% if @user.id == current_user.id %>
+              <%= link_to '編集', edit_user_path(@user.id), class:"btn btn-outline-success" %>
+          <% end %>
+        </div>
       </div>
-      <div>
-        <h6>自己紹介</h6>
-        <%= @user.introduction %>
-      </div>
-      <% if @user.id == current_user.id %>
-          <%= link_to '編集', edit_user_path(@user.id), class:"btn btn-outline-success" %>
-      <% end %>
     </div>
-      <div class="col-lg-9">
+    <!--</div>-->
+
       <!--自分の投稿一覧レンダリング-->
-      <%= render 'items/index', items:@items %>
+      <h4><%= @user.name %>さんの　おきもち</h4>
+        <%= render 'items/index', items:@items %>
       <%= paginate @items %>
-    </div>
+
   </div>
+</div>
 </div>

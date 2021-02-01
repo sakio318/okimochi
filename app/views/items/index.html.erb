@@ -6,12 +6,7 @@
     </div>
     <div class="col-lg-9">
       <!--検索機能-->
-      <%= form_with url: search_path, method: :get, local:true do |f| %>
-        <%= f.select :option, [["ユーザー","1"],["おきもち","2"]] %>
-        <%= f.text_field :search %>
-
-        <%= f.submit '検索' %>
-      <% end %>
+      <%= render 'items/search' %>
       <h4>おきもち一覧画面</h4>
       <!--投稿一覧レンダリング-->
         <%= render 'items/index', items:@items %>

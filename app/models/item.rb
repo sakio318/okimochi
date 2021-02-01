@@ -4,14 +4,15 @@ class Item < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :reviews, dependent: :destroy
   has_many :item_situations, dependent: :destroy
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
 
   def Item.search(search,user_or_item)
-    if user_or_item == "2"
-      Item.where(['name LIKE?',"%#{search}%"])
+    if search.empty?
+      @select_items
+    elsif search.present?
+      Item.where(['name LIKE?',"%#{search}%"]+(@select_items))
     else
       Item.all
     end

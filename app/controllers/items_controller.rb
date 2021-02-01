@@ -2,14 +2,12 @@ class ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).reverse_order
     @user = User.find(current_user.id)
-    # reviews = Review.all
   end
 
   def show
     @item = Item.find_by(id: params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user).reverse_order
-    # @review = Review.new
     @user = User.find(current_user.id)
     @situations = Situation.where(item_id: :@item)
 
@@ -33,7 +31,6 @@ class ItemsController < ApplicationController
         })
         @item_situation.save
       end
-
     redirect_to user_path(current_user)
   end
 
@@ -56,13 +53,18 @@ class ItemsController < ApplicationController
   end
 
   def search
-    
+    situations = Situation.all
+    @scene = params[:scene_ids]
+    @scene.map!(&:to_i)
+    item_all = Item.all
+    @select_items =  Item.where(situations.ids == @scene)
     @user_or_item = params[:option]
+
     if @user_or_item == "1"
-      @users = User.search(params[:search],@user_or_item)
-    else
       @items = Item.search(params[:search],@user_or_item)
+
     end
+    binding.pry
   end
 
   private

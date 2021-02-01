@@ -1,4 +1,4 @@
-<%= attachment_image_tag user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %>
+<%= attachment_image_tag user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %><br>
 <%= link_to user_path(current_user.id) do %>
   <%= user.name %>
 <% end %>

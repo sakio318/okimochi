@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @items = Item.where(user_id: @user.id).page(params[:page]).reverse_order
+    @other_user = User.find(params[:id])
+    @items = Item.where(user_id: @other_user.id).page(params[:page]).reverse_order
   end
 
   def edit

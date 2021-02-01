@@ -5,7 +5,7 @@
       <%= form_with model: @user, url: user_path,method: :patch, local:true do |f| %>
       <ul>
         <li>
-          <%= attachment_image_tag @user, :image, fallback: "person.jpg",size: "60x60" %>
+          <%= attachment_image_tag @user, :image, fallback: "person.jpg",size: "60x60" %><br>
           <label for="inputImage">ヘッダー画像</label>
           <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
         </li>

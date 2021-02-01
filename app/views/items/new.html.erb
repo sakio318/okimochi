@@ -19,10 +19,10 @@
         <%= f.collection_select(:genre_id, @genres, :id, :name) %>
 
         <h6>シチュエーション</h6>
-        <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
+        <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation, include_hidden: false %>
 
         <h6>画像</h6>
-        <%= f.attachment_field :post_images_photos, multiple: true %>
+        <%= f.attachment_field :post_images_photos, multiple: true,include_hidden: false %>
         <%= f.submit '投稿する' %>
         <% end %>
   </div>

@@ -25,7 +25,7 @@
                   <%= item.favorites.count %>
                 </div>
                 <div class="row">
-                  レビュー
+                  評価
                   <div id="star-rate-<%= item.id %>"></div>
                   <%= item.comments.count %>件
                   <script>
@@ -48,8 +48,9 @@
                     同梱
                   <% end %></strong>
                 </div>
-                <div>
-                  <%= render 'items/favo', item: item %>
+                <!--いいね機能レンダリング-->
+                <div class="favorite-btn_<%= item.id %>">
+                  <%= render 'favorites/favo', item: item %>
                 </div>
              </div>
              </div>

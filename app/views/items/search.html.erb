@@ -1,12 +1,11 @@
 <div class="container">
   <div class="row">
      <div class="col-lg-9 offset-3">
-      <% if @user_or_item == "1" %>
-
-       <%= render 'users/user_index' , users:@users %>
-      <% elsif @user_or_item == "2" %>
+  
+      <% elsif @user_or_item == "製品名" %>
        <%= render 'index', items:@items %>
       <% end %>
     </div>
   </div>
 </div>
+

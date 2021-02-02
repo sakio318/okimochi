@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_061944) do
+ActiveRecord::Schema.define(version: 2021_02_02_025920) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_061944) do
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.string "shop_name", null: false
-    t.text "url"
     t.boolean "packing", default: true, null: false
     t.text "introduction"
     t.integer "user_id", null: false

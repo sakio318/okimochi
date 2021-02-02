@@ -1,9 +1,9 @@
 
-  <h6>贈るシチュエーションに合わせて検索ができます！</h6>
+<h6>贈るシチュエーションに合わせて検索ができます！</h6>
 <%= form_with url: search_path, method: :get, local:true do |f| %>
-  <%= f.collection_check_boxes :scene_ids, Situation.all, :id, :situation,include_hidden: false %>
-  <%= f.select :option, ["おきもち","1"] %>
-  <%= f.text_field :search %>
+  <%= f.collection_check_boxes :scene_ids, Situation.all, :id, :situation,include_hidden: false %><br>
+  <%= f.hidden_field :option,  value: "おきもち" %>
+  <%= f.text_field :search, placeholder:"例　チョコ" %>
 
   <%= f.submit '検索' %>
 <% end %>

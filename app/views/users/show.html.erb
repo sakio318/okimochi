@@ -3,8 +3,7 @@
     <div class="col-lg-8 offset-2">
       <h4>マイページ</h4>
       <div class="d-flex flex-row">
-        <!--<div class="mx-1">-->
-        <!--<divclass="row"></div>-->
+
           <%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %>
       <div class="d-flex flex-column">
         <div class="row mx-1">
@@ -19,10 +18,12 @@
           <% if @user.id == current_user.id %>
               <%= link_to '編集', edit_user_path(@user.id), class:"btn btn-outline-success" %>
           <% end %>
+           <%= link_to  favo_index_user_path(@user.id), class:"btn btn-outline-success" do%>
+            <i class="far fa-heart"></i><h6>一覧</h6>
+          <% end %>
         </div>
       </div>
     </div>
-    <!--</div>-->
 
       <!--自分の投稿一覧レンダリング-->
       <h4><%= @user.name %>さんの　おきもち</h4>

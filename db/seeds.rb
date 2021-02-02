@@ -10,9 +10,9 @@ Situation.create!(
   [
     { situation: 'お手土産'},
     { situation: 'お歳暮'},
-    { situation: '父の日'},
-    { situation: '母の日'},
-    { situation: '敬老の日'},
+    { situation: 'バレンタイン'},
+    { situation: 'ホワイトデー'},
+    { situation: '子供の日'},
     { situation: 'お誕生日プレゼント'},
     { situation: '記念日'},
     { situation: '友人へ送る'},

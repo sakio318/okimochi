@@ -53,18 +53,22 @@ class ItemsController < ApplicationController
   end
 
   def search
-    situations = Situation.all
+    # situations = Situation.all
     @scene = params[:scene_ids]
-    @scene.map!(&:to_i)
-    item_all = Item.all
-    @select_items =  Item.where(situations.ids == @scene)
-    @user_or_item = params[:option]
-
-    if @user_or_item == "1"
-      @items = Item.search(params[:search],@user_or_item)
-
+    if @scene.present?
+      @scene.map!(&:to_i)
+    elsif @scene.blank?
+      @scene = nil
     end
-    binding.pry
+    @search = params[:search]
+    if @search.blank?
+      @search = nil
+    end
+     @user_or_item = params[:option]
+
+    if @user_or_item == "おきもち"
+      @items = Item.search_for(@search,@scene)
+    end
   end
 
   private

@@ -6,9 +6,11 @@
     <div class="col-lg-8">
       <h4>おきもちの詳細情報</h4>
       <!--いいね機能レンダリング-->
-      <div class="favorite-btn_<%= @item.id %>">
-        <%= render 'favorites/favo', item:@item %>
-      </div>
+      <% if @item.user_id != current_user.id %>
+        <div class="favorite-btn_<%= @item.id %>">
+          <%= render 'favorites/favo', item:@item %>
+        </div>
+      <% end %>
       <table  class="table">
         <tr><td>
           <% if @item.post_images.present? %>

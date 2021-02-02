@@ -1,5 +1,4 @@
-<!--<div class="container">-->
-  <div class="justify-content-center">
+<div class="top">
     <div id="container">
       <div id="topslide">
         <div class="image1"></div>
@@ -8,14 +7,20 @@
         <div class="image4"></div>
       </div>
     </div>
+    <div class="welcom-m">
+      <h4>ようこそおきもちへ！
+      あなたの日頃のおきもちを<br>みなさんとシェアしませんか</h4>
+    </div>
+    <div class="top-ranking">
       <% @items.each do |item| %>
-        <%= item.name %><br>
+        <div class="ranking-item">
         <% if item.post_images.present? %>
           <% item.post_images.first(1).each do |image| %>
             <%= attachment_image_tag image, :photo, size: "200x200" %>
           <% end %>
-        <% end %>
+         <% end %><br>
+         <%= item.name %>
+        </div>
       <% end %>
-
-  </div>
-<!--</div>-->
+    </div>
+</div>

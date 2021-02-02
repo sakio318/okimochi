@@ -8,13 +8,16 @@ class Item < ApplicationRecord
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
 
-  def Item.search(search,user_or_item)
-    if search.empty?
-      @select_items
-    elsif search.present?
-      Item.where(['name LIKE?',"%#{search}%"]+(@select_items))
+  def Item.search_for(search,scene)
+    if search.nil?
+      Item.joins(:situations).where("situations.id IN (?)", scene).distinct
+    elsif scene.nil?
+      Item.joins(:situations).where("items.name LIKE(?) ", "%#{search}%" ).distinct
+
+    elsif [search,scene].present?
+      Item.joins(:situations).where("items.name LIKE (?) AND situations.id IN (?)", "%#{search}%", scene).distinct
     else
-      Item.all
+      @items = Item.all
     end
   end
 

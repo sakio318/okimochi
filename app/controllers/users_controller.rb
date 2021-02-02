@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def favo_index
+    @user =  User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
+    @items = Item.find(favorites)
+  end
+
   private
 
   def user_params

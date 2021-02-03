@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     @comments = @item.comments.includes(:user).reverse_order
     @user = User.find(current_user.id)
-    @situations = Situation.where(item_id: :@item)
+    # @situations = Situation.where(item_id: :@item)
 
   end
 
@@ -53,13 +53,13 @@ class ItemsController < ApplicationController
   end
 
   def search
-    # situations = Situation.all
     @scene = params[:scene_ids]
     if @scene.present?
       @scene.map!(&:to_i)
     elsif @scene.blank?
       @scene = nil
     end
+
     @search = params[:search]
     if @search.blank?
       @search = nil

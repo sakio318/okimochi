@@ -31,7 +31,7 @@
         </td></tr>
         <tr><td>この商品について</td><td><%= @item.introduction %></td></tr>
         <tr><td>ジャンル</td><td><%= @item.genre.name %></td></tr>
-        <tr><td>シチュエーション</td><td><%= @item.situations.pluck(:situation).join(",") %></td></tr>
+        <tr><td>シチュエーション</td><td><%= @item.situations.distinct.pluck(:situation).join(",") %></td></tr>
         </table>
         <% if @item.user_id == current_user.id %>
           <%= link_to '編集', edit_item_path(@item.id), class:"btn btn-outline-success" %>

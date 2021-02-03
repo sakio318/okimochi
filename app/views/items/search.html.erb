@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
      <div class="col-lg-9 offset-3">
-  
-      <% elsif @user_or_item == "製品名" %>
+
+      <% if @user_or_item == "おきもち" %>
        <%= render 'index', items:@items %>
       <% end %>
     </div>

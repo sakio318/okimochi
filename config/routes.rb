@@ -4,10 +4,17 @@ Rails.application.routes.draw do
   get "search" => "items#search"
   get 'favo_index' => "users#favo_index"
 
-  devise_for :users
+  devise_for :users, controllers:{
+    registrations: 'users/registrations'
+  }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+  
   resources :users, only:[:index,:show,:edit,:update] do
       get :favo_index, on: :member
   end
+
 
   resources :items do
     resource :favorites, only:[:index,:create,:destroy]

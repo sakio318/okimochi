@@ -1,34 +1,48 @@
 <% items.each do |item| %>
+<div class="each_item">
           <div class="flex-container">
             <div class="row">
-            <div class="m-2 col-lg-3">
+              <div class"col-lg-1">
+                <% if item.user_id != current_user.id %>
+                  <div class="favorite-btn_<%= item.id %>">
+                    <%= render 'favorites/favo', item: item %>
+                  </div>
+                <% end %>
+                </div>
+              <div class="col-lg-3">
               <% if item.post_images.present? %>
                 <% item.post_images.first(1).each do |image| %>
-                  <%= attachment_image_tag image, :photo, size: "150x150" %>
+                  <%= link_to item_path(item) do %>
+                    <%= attachment_image_tag image, :photo, size: "150x150" %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
-            <div class"col-lg-6">
+
+            <div class"col-lg-5">
             <div class="flex-column">
                 <div class="row">
-                  <h6 class="mx-1">製品名</h6>
+                  <h6 class="mx-1"><i class="far fa-user"></i>
+                    <strong><%= item.user.name %></strong></h6>
+                </div>
+                <div class="row">
+                  <h6 class="mx-1"><i class="fas fa-gift"></i>製品名
                   <%= link_to item_path(item) do %>
-                  <strong><%= item.name %></strong>
+                  <strong><%= item.name %></strong></h6>
                   <% end %>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1">販売店名</h6>
-                    <strong><%= item.shop_name %></strong>
+                  <h6 class="mx-1"><i class="fas fa-store"></i>店名
+                    <strong><%= item.shop_name %></strong></h6>
                 </div>
                 <div class="row">
-                  <h6>気になる</h6>
-                  <i class="mx-1 fas fa-heart"></i>
-                  <%= item.favorites.count %>
+                  <h6 class="mx-1"><i class="fas fa-heart"></i>気になる
+                  <%= item.favorites.count %></h6>
                 </div>
                 <div class="row">
-                  評価
-                  <div id="star-rate-<%= item.id %>"></div>
+                  <h6 class="mx-1"><i class="fas fa-comment"></i>評価
                   <%= item.comments.count %>件
+                  <div id="star-rate-<%= item.id %>"></div></h6>
                   <script>
                   $('#star-rate-<%= item.id %>').raty({
                     size: 36,
@@ -42,21 +56,20 @@
                   </script>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1">包装</h6>
+                  <h6 class="mx-1"><i class="fas fa-box"></i>包装
                   <strong><% if item.packing %>
                     個包装
                   <% elsif %>
                     同梱
-                  <% end %></strong>
+                  <% end %>
+                  </strong></h6>
                 </div>
+              </div>
+              </div>
                 <!--いいね機能レンダリング-->
-                <% if item.user_id != current_user.id %>
-                  <div class="favorite-btn_<%= item.id %>">
-                    <%= render 'favorites/favo', item: item %>
-                  </div>
-                <% end %>
-             </div>
-             </div>
+
+
              </div>
             </div>
+          </div>
         <% end %>

@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   has_many :items, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -13,4 +12,5 @@ class User < ApplicationRecord
       user.name = "ゲスト"
     end
   end
+
 end

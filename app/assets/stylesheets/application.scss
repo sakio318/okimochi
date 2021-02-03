@@ -17,7 +17,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 .heder-container{
   background-color:#FFFFEE;
 }
@@ -45,3 +45,6 @@
   background-image: url(topimage4.jpg);
 }
 
+h2,h4,h6{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}

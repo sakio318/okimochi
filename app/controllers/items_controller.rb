@@ -68,6 +68,7 @@ class ItemsController < ApplicationController
 
     if @user_or_item == "おきもち"
       @items = Item.search_for(@search,@scene)
+      @user = User.find(current_user.id)
     end
   end
 

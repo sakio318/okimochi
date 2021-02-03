@@ -1,10 +1,32 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-h6{
- font-family: 'M PLUS Rounded 1c', sans-serif;
+.item_index{
+  margin: 20px;
 }
-h4{
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+.sidebar{
+  margin-top: 60px;
+}
+.new_post{
+  text-align: left;
+  margin: 20px;
+}
+.item_topm{
+margin: 10px 0px;
+}
+
+.search_form{
+  margin-top: 30px;
+}
+
+.each_item{
+  margin: 20px 0px;
+}
+
+.index_item{
+margin-top: 20px;
+}
+// 検索結果
+.search_index{
+  margin-top: 40px;
 }

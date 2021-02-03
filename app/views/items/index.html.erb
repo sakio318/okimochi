@@ -1,16 +1,27 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= render 'users/sidebar', user:@user %>
-      <p><%= link_to '新しい おきもち を追加する' ,  new_item_path, class:"btn btn-sm btn-outline-primary" %></p>
+      <!--サイドバーレンダリング-->
+      <div class="sidebar">
+        <%= render 'users/sidebar', user:@user %>
+      </div>
     </div>
     <div class="col-lg-9">
-      <!--検索機能-->
-      <%= render 'items/search' %>
-      <h4>おきもち一覧画面</h4>
-      <!--投稿一覧レンダリング-->
-        <%= render 'items/index', items:@items %>
-      <%= paginate @items %>
+      <div class="item_index">
+        <h2 class="item_topm">
+          <i class="fas fa-gifts"></i>
+          みんなのおきもち
+        </h2>
+          <!--検索機能-->
+        <div class="search_form">
+          <%= render 'items/search' %>
+        </div>
+        <!--投稿一覧レンダリング-->
+        <div class="index_item">
+          <%= render 'items/index', items:@items %>
+        </div>
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>

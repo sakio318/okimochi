@@ -1,9 +1,18 @@
 <div class="container">
   <div class="row">
-     <div class="col-lg-9 offset-3">
-  
-      <% elsif @user_or_item == "製品名" %>
-       <%= render 'index', items:@items %>
+   <div class="col-lg-3">
+      <!--サイドバーレンダリング-->
+      <div class="sidebar">
+        <%= render 'users/sidebar', user:@user %>
+      </div>
+    </div>
+     <div class="col-lg-9">
+      <h2><i class="fas fa-gifts"></i>
+          検索結果</h2>
+      <% if @user_or_item == "おきもち" %>
+      <div class="search_index">
+        <%= render 'index', items:@items %>
+       </div>
       <% end %>
     </div>
   </div>

@@ -19,6 +19,7 @@
 //= require rails-ujs
 //= require activestorage
 
+// スライドショー記述
 $(document).ready(function(){
     $("#topslide").skippr({
         transition : 'slide',

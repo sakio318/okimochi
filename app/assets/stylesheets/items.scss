@@ -1,3 +1,50 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.item_index{
+  margin: 20px;
+}
+.sidebar{
+  margin-top: 60px;
+}
+.new_post{
+  text-align: left;
+  margin: 20px;
+}
+.item_topm{
+margin: 10px 0px;
+}
+
+.search_form{
+  margin-top: 30px;
+}
+
+.each_item{
+  margin: 20px 0px;
+}
+
+.index_item{
+margin-top: 20px;
+}
+
+strong{
+  margin-left: 5px;
+}
+// 検索結果
+.search_index{
+  margin-top: 40px;
+}
+
+// item/showについて
+.show_item{
+  margin-left: 3px;
+}
+.show_item_list{
+  margin: 20px 0px;
+}
+.show_comment_form{
+  margin: 30px 0px;
+}
+.form_submit{
+ 
+}

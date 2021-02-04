@@ -1,4 +1,4 @@
-<div class="top">
+<div class="top_body">
     <div id="container">
       <div id="topslide">
         <div class="image1"></div>
@@ -7,24 +7,30 @@
         <div class="image4"></div>
       </div>
     </div>
+    <div class="col-lg-12">
     <div class="welcom-m">
       <h2>ようこそおきもちへ！<br>
       あなたの日頃のおきもちを<br>みなさんとシェアしませんか</h2>
     </div>
-
-    <div class="top-ranking">
-      <div class="ranking-m">
+    <div class="ranking-m">
         <h4>このサイト内で評価の高いおきもちです！！</h4>
       </div>
-      <% @items.each do |item| %>
+
+    <div class="top-ranking">
+
+      <% @items.each.with_index(1) do |item,i| %>
         <div class="ranking-item">
         <% if item.post_images.present? %>
           <% item.post_images.first(1).each do |image| %>
             <%= attachment_image_tag image, :photo, size: "200x200" %>
           <% end %>
          <% end %><br>
-         <%= item.name %>
-        </div>
+         <ul>
+           <li><h6><i class="fas fa-crown"></i>第<%= i %>位</h6></li>
+           <li><h6>製品名<p><%= item.name %></p></h6></li>
+          </ul>
+      </div>
       <% end %>
     </div>
-</div>
+      </div>
+  </div>

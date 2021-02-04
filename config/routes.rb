@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get "search" => "items#search"
-  get 'favo_index' => "users#favo_index"
 
   devise_for :users, controllers:{
     registrations: 'users/registrations'
@@ -10,10 +9,12 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-  
+
   resources :users, only:[:index,:show,:edit,:update] do
-      get :favo_index, on: :member
+    member do
+      get 'favo_index'
   end
+end
 
 
   resources :items do

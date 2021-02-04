@@ -1,4 +1,4 @@
-$("#js-table-comment").html("<%= j(render 'comments',{ comments: @comments}) %>")
+$("#js-table-comment").html("<%= j(render 'comments',@comments) %>")
 $("textarea").val('')
-$("hidden_field").val('')
+$("review_star").val('')
 

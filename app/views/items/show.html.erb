@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-lg-3">
       <!--サイドバーレンダリング-->
-      <%= render 'users/sidebar', user:@user %>
+      <div class="sidebar">
+       <%= render 'users/sidebar', user:@user %>
+      </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-9">
       <h4>おきもちの詳細情報</h4>
       <!--いいね機能レンダリング-->
       <% if @item.user_id != current_user.id %>
@@ -12,39 +14,70 @@
           <%= render 'favorites/favo', item:@item %>
         </div>
       <% end %>
-      <table  class="table">
-        <tr><td>
+      <div class="show_item">
           <% if @item.post_images.present? %>
             <% @item.post_images.each do |image| %>
              <%= attachment_image_tag image, :photo, size: "200x200" %>
             <% end %>
           <% end %>
-        </td></tr>
-        <tr><td>商品名</td><td><%= @item.name %></td></tr>
-        <tr><td>お店の名前</td><td><%= @item.shop_name %></td></tr>
-        <tr>
-          <td>包装</td>
-          <td><% if @item.packing %>
-              個包装
-          <% elsif %>
-              同梱
-          <% end %>
-        </td></tr>
-        <tr><td>この商品について</td><td><%= @item.introduction %></td></tr>
-        <tr><td>ジャンル</td><td><%= @item.genre.name %></td></tr>
-        <tr><td>シチュエーション</td><td><%= @item.situations.distinct.pluck(:situation).join(",") %></td></tr>
-        </table>
-        <% if @item.user_id == current_user.id %>
-          <%= link_to '編集', edit_item_path(@item.id), class:"btn btn-outline-success" %>
-          <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } ,
-            class:"btn btn-outline-danger"%>
-        <% end %>
+          <div class="show_item_list">
+          <div class="flex-column">
+            <div class="row">
+              <h6 class="mx-1"><i class="fas fa-user"></i>投稿者
+              <%= link_to user_path(@item.user) do %>
+                <strong><%= @item.user.name %></strong></h6>
+              <% end %>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="fas fa-gift"></i>商品名
+                <strong><%= @item.name %></strong></h6>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="fas fa-store"></i>お店の名前
+                <strong><%= @item.shop_name %></strong></h6>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="fas fa-box"></i>包装
+                <strong><% if @item.packing %>
+                          個包装
+                        <% elsif %>
+                            同梱
+                        <% end %>
+                </strong>
+              </h6>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="far fa-caret-square-right"></i>この商品について
+                <strong><%= @item.introduction %></strong></h6>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="far fa-question-circle"></i>商品ジャンル
+                <strong><%= @item.genre.name %></strong></h6>
+            </div>
+            <div class="row">
+              <h6 class="mx-1"><i class="far fa-handshake"></i>シチュエーション
+                <strong><%= @item.situations.distinct.pluck(:situation).join(",") %></strong></h6>
+            </div>
+            <div class="row">
+              <% if @item.user_id == current_user.id %>
+                <%= link_to '編集', edit_item_path(@item.id), class:"btn btn-outline-success" %>
+                <%= link_to '削除', item_path(@item),method: :delete, data: { confirm: "削除してよろしいですか？" } ,
+                    class:"btn btn-outline-danger"%>
+              <% end %>
+            </div>
+        </div>
+        </div>
+
         <!--ここからコメント評価フォーム-->
-        <%= render 'comments/form', item: @item,comment: @comment %>
-        <!--コメント評価の表示 -->
+        <div class="show_comment_form">
+          <h6><i class="fas fa-comment"></i>よろしければコメントと★評価をお寄せください</h6>
+          <%= render 'comments/form', item: @item,comment: @comment %>
+        </div>
+ <!--コメント評価の表示 -->
         <div id="js-table-comment">
           <%= render 'comments/comments', comments: @comments %>
         </div>
+        <div class="more"><%= link_to_next_page @comments, 'もっと見る', remote: true, id: 'view_more' %></div>
 
           </div>
       </div>

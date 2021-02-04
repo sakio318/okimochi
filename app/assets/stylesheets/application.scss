@@ -18,6 +18,13 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .heder-container{
   background-color:#FFFFEE;
 }
@@ -26,23 +33,6 @@
 }
 .footer-container{
    background-color:#FFFFCC;
-}
-// スライドショー
-#container{
-  height: 300px;
-  width: 700px;
-}
-.image1 {
-  background-image: url(topimage1.jpg);
-}
-.image2 {
-  background-image: url(topimage2.jpg);
-}
-.image3 {
-  background-image: url(topimage3.jpg);
-}
-.image4 {
-  background-image: url(topimage4.jpg);
 }
 
 h2,h4,h6{

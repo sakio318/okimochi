@@ -1,35 +1,33 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 offset-2">
-      <h4>マイページ</h4>
-      <div class="d-flex flex-row">
+    <div class="col-lg-3">
+      <div class="flex-column">
+        <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %></div>
 
-          <%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %>
-      <div class="d-flex flex-column">
-        <div class="row mx-1">
-          <h6>お名前</h6>
-          <%= @user.name %>
+          <h6><i class="far fa-user"></i>ユーザー名</h6>
+          <div class=".user_show_side"><%= @user.name %></div>
+        <div class="row">
+          <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介</h6>
+          <div class="user_show_side"><%= @user.introduction %></div>
         </div>
-        <div class="row mx-1">
-          <h6>自己紹介</h6>
-          <%= @user.introduction %>
-        </div>
-        <div class="p-2 bd-highlight">
-          <% if @user.id == current_user.id %>
-              <%= link_to '編集', edit_user_path(@user.id), class:"btn btn-outline-success" %>
-          <% end %>
-           <%= link_to  favo_index_user_path(@user.id), class:"btn btn-outline-success" do%>
-            <i class="far fa-heart"></i><h6>一覧</h6>
-          <% end %>
+        <div>
+            <% if @user.id == current_user.id %>
+              <%= link_to edit_user_path(@user.id), class:"btn btn-outline-success" do %>
+               <h6><i class="fas fa-user-cog"></i>編集</h6>
+              <% end %>
+            <% end %>
+            <%= link_to favo_index_user_path(@user.id), class:"btn btn-outline-success" do %>
+              <h6><i class="far fa-heart"></i>一覧</h6>
+            <% end %>
         </div>
       </div>
     </div>
 
+    <div class="col-lg-9">
       <!--自分の投稿一覧レンダリング-->
-      <h4><%= @user.name %>さんの　おきもち</h4>
+      <h4><i class="fas fa-gifts"></i><%= @user.name %>さんの　おきもち</h4>
         <%= render 'items/index', items:@items %>
       <%= paginate @items %>
-
+    </div>
   </div>
-</div>
-</div>
+ </div>

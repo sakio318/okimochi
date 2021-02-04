@@ -22,27 +22,27 @@
             <div class"col-lg-5">
             <div class="flex-column">
                 <div class="row">
-                  <h6 class="mx-1"><i class="far fa-user"></i>
+                  <h6 class="ml-1"><i class="far fa-user"></i>
                     <strong><%= item.user.name %></strong></h6>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1"><i class="fas fa-gift"></i>製品名
+                  <h6 class="ml-1"><i class="fas fa-gift"></i>製品名
                   <%= link_to item_path(item) do %>
                   <strong><%= item.name %></strong></h6>
                   <% end %>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1"><i class="fas fa-store"></i>店名
+                  <h6 class="ml-1"><i class="fas fa-store"></i>店名
                     <strong><%= item.shop_name %></strong></h6>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1"><i class="fas fa-heart"></i>気になる
+                  <h6 class="ml-1"><i class="fas fa-heart"></i>気になる
                   <%= item.favorites.count %></h6>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1"><i class="fas fa-comment"></i>評価
-                  <%= item.comments.count %>件
-                  <div id="star-rate-<%= item.id %>"></div></h6>
+                  <div class="ml-1"><h6 ><i class="fas fa-comment"></i>評価
+                  <%= item.comments.count %>件</h6>
+                  <div id="star-rate-<%= item.id %>"></div></div>
                   <script>
                   $('#star-rate-<%= item.id %>').raty({
                     size: 36,
@@ -56,7 +56,7 @@
                   </script>
                 </div>
                 <div class="row">
-                  <h6 class="mx-1"><i class="fas fa-box"></i>包装
+                  <h6 class="ml-1"><i class="fas fa-box"></i>包装
                   <strong><% if item.packing %>
                     個包装
                   <% elsif %>
@@ -67,8 +67,6 @@
               </div>
               </div>
                 <!--いいね機能レンダリング-->
-
-
              </div>
             </div>
           </div>

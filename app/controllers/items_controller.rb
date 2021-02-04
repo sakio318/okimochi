@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @comment = Comment.new
-    @comments = @item.comments.includes(:user).reverse_order
+    @comments = @item.comments.includes(:user).reverse_order.page(params[:page]).per(3)
     @user = User.find(current_user.id)
     # @situations = Situation.where(item_id: :@item)
 
@@ -35,13 +35,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
     @user = User.find(current_user.id)
     @genres = Genre.all
   end
 
   def update
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to item_path(@item)
   end

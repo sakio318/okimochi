@@ -5,9 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
-    @other_user = User.find(params[:id])
-    @items = Item.where(user_id: @other_user.id).page(params[:page]).reverse_order
+    @user = User.find(params[:id])
+    @items = Item.where(user_id: @user.id).page(params[:page]).reverse_order
   end
 
   def edit
@@ -23,6 +22,11 @@ class UsersController < ApplicationController
     @user =  User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @items = Item.find(favorites)
+  end
+
+  def other
+    @user = User.find(params[:id])
+    @items = Item.where(user_id: @user)
   end
 
   private

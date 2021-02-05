@@ -1,8 +1,8 @@
 <div class="sidebar">
   <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %><br>
-  <h6>ユーザー名</h6>
+  <h6>アカウント名</h6>
   <%= link_to user_path(user.id) do %>
-    <%= user.name %>
+  <%= user.name %>
   <% end %>
   <p class="new_post">
     <!--新規投稿-->

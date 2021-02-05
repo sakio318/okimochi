@@ -14,19 +14,17 @@ class UsersController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user),　notice: '編集されました'
+    else
+      render :edit
+    end
   end
 
   def favo_index
     @user =  User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:item_id)
     @items = Item.find(favorites)
-  end
-
-  def other
-    @user = User.find(params[:id])
-    @items = Item.where(user_id: @user)
   end
 
   private

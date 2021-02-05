@@ -21,17 +21,28 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
+    @user = User.find(current_user.id)
     @new_item = Item.new(item_params)
     @new_item.user_id = current_user.id
-    @new_item.save
-      item_params[:situation_ids].each do |sid|
+    if @new_item.save
+      redirect_to user_path(current_user),notice: '投稿されました'
+    else
+      render :new
+    end
+
+    if item_params[:situation_ids].nil?
+      @item_situation = nil
+    else
+        item_params[:situation_ids].each do |sid|
         @item_situation = ItemSituation.new({
           situation_id: sid,
           item_id: @new_item.id
         })
-        @item_situation.save
+         @item_situation.save
       end
-    redirect_to user_path(current_user)
+    end
+
   end
 
   def edit
@@ -41,15 +52,20 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @genres = Genre.all
+    @user = User.find(current_user.id)
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to item_path(@item)
+    if @item.update(item_params)
+      redirect_to item_path(@item),notice: '編集が完了しました'
+    else
+      render :edit
+    end
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to items_path,notice: '削除されました'
   end
 
   def search

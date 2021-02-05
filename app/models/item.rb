@@ -8,6 +8,18 @@ class Item < ApplicationRecord
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
 
+  # バリデーション設定
+  with_options presence: true do
+    validates :name
+    validates :shop_name
+    validates :packing
+    validates :introduction
+  end
+
+  validate :situation_valid?
+
+# 検索アクション
+# 検索ワードとシチュエーションが空で検索されることを想定した条件分岐
   def Item.search_for(search,scene)
     if search.nil?
       Item.joins(:situations).where("situations.id IN (?)", scene).distinct
@@ -25,8 +37,14 @@ class Item < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-
   accepts_nested_attributes_for :item_situations, allow_destroy: true
   accepts_attachments_for :post_images, attachment: :photo
-end
 
+  private
+  def situation_valid?
+    if @item_situation.nil?
+      errors.add(:situation_ids)
+    end
+  end
+
+end

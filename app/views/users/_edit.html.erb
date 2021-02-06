@@ -1,0 +1,41 @@
+  <div class="modal fade" id="useredit" tabindex="-1" role="dialog" aria-labelledby="usereditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="usereditLabel">ユーザー情報編集</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="useredit">
+            <div class="error_messages">
+              <%= render 'layouts/error_messages', model: user %>
+            </div>
+
+            <%= form_with model: @user, url: user_path,method: :patch, local:true do |f| %>
+              <ul>
+                <li>
+                  <%= attachment_image_tag @user, :image, fallback: "",size: "60x60" %><br>
+                  <label for="inputImage">ヘッダー画像</label>
+                  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+                </li>
+                <li>
+                  <h6>アカウント名(15文字以内)</h6>
+                  <%= f.text_field :name %>
+                </li>
+                <li>
+                  <h6>自己紹介(50文字以内）</h6>
+                  <%= f.text_area :introduction, size: "40x4" %>
+                </li>
+                <li><%#= f.submit '編集する' %></li>
+              </ul>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <button><%= f.submit '編集',class:"btn btn-primary" %><% end %></button>
+      </div>
+    </div>
+  </div>
+</div>

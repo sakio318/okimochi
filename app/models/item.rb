@@ -7,17 +7,19 @@ class Item < ApplicationRecord
   has_many :item_situations, dependent: :destroy
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
+  attr_accessor :situation_ids
 
   # バリデーション設定
+  # シチュエーションバリデのみ下部に別途定義
   with_options presence: true do
     validates :name
     validates :shop_name
     validates :packing
     validates :introduction
   end
-
-  validate :situation_valid?
-
+    validate :situation_valid?
+    
+    
 # 検索アクション
 # 検索ワードとシチュエーションが空で検索されることを想定した条件分岐
   def Item.search_for(search,scene)
@@ -42,7 +44,7 @@ class Item < ApplicationRecord
 
   private
   def situation_valid?
-    if @item_situation.nil?
+    if situation_ids.blank?
       errors.add(:situation_ids)
     end
   end

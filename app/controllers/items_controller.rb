@@ -9,8 +9,6 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     @comments = @item.comments.includes(:user).reverse_order.page(params[:page]).per(3)
     @user = User.find(current_user.id)
-    # @situations = Situation.where(item_id: :@item)
-
   end
 
   def new
@@ -26,23 +24,17 @@ class ItemsController < ApplicationController
     @new_item = Item.new(item_params)
     @new_item.user_id = current_user.id
     if @new_item.save
-      redirect_to user_path(current_user),notice: '投稿されました'
-    else
-      render :new
-    end
-
-    if item_params[:situation_ids].nil?
-      @item_situation = nil
-    else
-        item_params[:situation_ids].each do |sid|
+      item_params[:situation_ids].each do |sid|
         @item_situation = ItemSituation.new({
           situation_id: sid,
           item_id: @new_item.id
         })
-         @item_situation.save
+        @item_situation.save
       end
+      redirect_to user_path(current_user),notice: '投稿されました'
+    else
+      render :new
     end
-
   end
 
   def edit
@@ -56,7 +48,7 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to item_path(@item),notice: '編集が完了しました'
+      redirect_to item_path(@item),　notice: '編集が完了しました'
     else
       render :edit
     end

@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="flex-column">
-        <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "person.jpg", size: "100x100" %></div>
-
-          <h6><i class="far fa-user"></i>ユーザー名</h6>
-          <div class=".user_show_side"><%= @user.name %></div>
+        <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %></div>
+        <h6><i class="far fa-user"></i>ユーザー名</h6>
+        <div class=".user_show_side"><%= @user.name %></div>
         <div class="row">
           <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介</h6>
           <div class="user_show_side"><%= @user.introduction %></div>
@@ -15,18 +14,23 @@
               <%= link_to edit_user_path(@user.id), class:"btn btn-outline-success" do %>
                <h6><i class="fas fa-user-cog"></i>編集</h6>
               <% end %>
+              <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#useredit">-->
+              <!--  <h6><i class="fas fa-user-cog"></i>編集</h6>-->
+              <!--</button>-->
             <% end %>
+            <!--ユーザー情報編集モーダル画面レンダリング-->
+            <%#= render 'edit', user: @user %>
             <%= link_to favo_index_user_path(@user.id), class:"btn btn-outline-success" do %>
               <h6><i class="far fa-heart"></i>一覧</h6>
             <% end %>
         </div>
       </div>
     </div>
-
+    <!--自分の投稿一覧レンダリング-->
     <div class="col-lg-9">
-      <!--自分の投稿一覧レンダリング-->
       <h4><i class="fas fa-gifts"></i><%= @user.name %>さんの　おきもち</h4>
         <%= render 'items/index', items:@items %>
+      <!--kaminar-->
       <%= paginate @items %>
     </div>
   </div>

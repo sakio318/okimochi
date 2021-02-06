@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
     @comment = @item.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.item_id = @item.id
-    @comment.save
+    unless @comment.save
+      render 'error' and return
+    end
     @comments = @item.comments.order(create_at: :desc)
-    render "create"
+    render "create" and return
 
   end
 

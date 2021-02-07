@@ -1,3 +1,3 @@
-$('#js-table-comment').append("<%= escape_javascript(render 'comments/comments', @comments} %>");
+$('#js-table-comment').append("<%= escape_javascript(render 'comments/comments', @comments) %>");
 $("#view_more").replaceWith("<%= escape_javascript(
 link_to_next_page(comments: @comments, 'もっと見る', remote: true, id: 'view_more')) %>");

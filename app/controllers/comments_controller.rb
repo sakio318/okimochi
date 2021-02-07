@@ -6,9 +6,11 @@ class CommentsController < ApplicationController
     @comment.item_id = @item.id
     unless @comment.save
       render 'error' and return
+    else
+       @comments = @item.comments.order(create_at: :desc)
+      render 'create' and return
+      render 'error' and return
     end
-    @comments = @item.comments.order(create_at: :desc)
-    render "create" and return
 
   end
 

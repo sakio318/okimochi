@@ -1,5 +1,5 @@
 <p>コメント件数：<%= comments.count %></p>
-<% @comments.each do |comment| %>
+<% comments.each do |comment| %>
   <div id="comment-<%= comment.id %>">
        <div class="flex-container">
         <div class="row">

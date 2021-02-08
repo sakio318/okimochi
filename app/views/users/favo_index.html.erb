@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <!--サイドバーレンダリング-->
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-sm-12 col-md-3">
         <%= render 'users/sidebar', user:@user %>
     </div>
-    <div class= "col-lg-9 offset3">
+    <div class= "col-lg-9 col-sm-12 col-md-9">
       <h4><%= @user.name %>さんのお気に入り一覧</h4>
       <div class="favo_index">
         <%= render 'items/index', {user: @user, items: @items} %>

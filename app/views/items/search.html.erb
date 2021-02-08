@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-   <div class="col-lg-3">
+   <div class="col-lg-3 col-sm-12 col-md-3">
       <!--サイドバーレンダリング-->
       <div class="sidebar">
         <%= render 'users/sidebar', user:@user %>
       </div>
     </div>
-     <div class="col-lg-9">
+     <div class="col-lg-9 col-sm-12 col-md-9">
       <h2><i class="fas fa-gifts"></i>
           検索結果</h2>
       <% if @user_or_item == "おきもち" %>

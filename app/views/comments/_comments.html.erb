@@ -1,7 +1,7 @@
 <p>コメント件数：<%= comments.count %></p>
 <% comments.each do |comment| %>
   <div id="comment-<%= comment.id %>">
-       <div class="flex-container">
+       <div class="flex-container m-3">
         <div class="row">
           <%= attachment_image_tag comment.user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %>
          <div class="flex-column">

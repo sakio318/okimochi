@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-sm-12 col-md-3">
       <%= render 'users/sidebar', user:@user %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-9 col-sm-12 col-md-9">
       <div class="error_messages">
         <%= render 'layouts/error_messages', model: @item %>
       </div>
@@ -20,10 +20,10 @@
         <%= f.text_area :introduction, size: "30x5" %>
         <h6>ジャンル</h6>
         <%= f.collection_select(:genre_id, @genres, :id, :name) %>
-        
+
         <h6>シチュエーション</h6>
         <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
-        
+
         <h6>画像</h6>
         <%= f.attachment_field :post_images_photos, multiple: true %>
         <%= f.submit '投稿する' %>

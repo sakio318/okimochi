@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-sm-12 col-md-3">
       <div class="flex-column">
         <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %></div>
         <h6><i class="far fa-user"></i>ユーザー名</h6>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <!--自分の投稿一覧レンダリング-->
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-sm-12 col-md-9">
       <h4><i class="fas fa-gifts"></i><%= @user.name %>さんの　おきもち</h4>
         <%= render 'items/index', items:@items %>
       <!--kaminar-->

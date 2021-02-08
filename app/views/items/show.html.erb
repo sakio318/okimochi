@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-sm-12 col-md-3">
       <!--サイドバーレンダリング-->
       <div class="sidebar">
        <%= render 'users/sidebar', user:@user %>
       </div>
     </div>
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-sm-12 col-md-9">
       <h4>おきもちの詳細情報</h4>
       <!--いいね機能レンダリング-->
       <% if @item.user_id != current_user.id %>

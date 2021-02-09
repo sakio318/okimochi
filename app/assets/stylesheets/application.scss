@@ -26,13 +26,13 @@
 }
 @media (min-width: 992px) {
  h2 {
-   font-size: 2.3rem;
+   font-size: 2.0rem;
  }
 }
 // 中デバイス（タブレット, 992px 未満）
 @media (max-width: 991.98px) {
  h2 {
-   font-size: 2.0rem;
+   font-size: 1.7rem;
  }
 }
 // 小デバイス（横向きモバイル, 768px 未満）
@@ -43,7 +43,7 @@
 }
 @media (max-width: 575.98px) {
  h2 {
-   font-size: 2.0rem;
+   font-size: 1.8rem;
  }
 }
 
@@ -64,7 +64,12 @@
 }
 @media (max-width: 575.98px) {
  h4 {
-   font-size: 1.3rem;
+   font-size: 1.2rem;
+ }
+}
+@media (max-width: 575.98px) {
+ h5 {
+   font-size: 1.0rem;
  }
 }
 
@@ -81,4 +86,17 @@
 
 h2,h3,h4,h5,h6{
   font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+}
+.index_item{
+  margin: 30px;
+}
+.longtext{
+ word-break: break-all;
 }

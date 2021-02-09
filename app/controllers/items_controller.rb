@@ -41,6 +41,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = User.find(current_user.id)
     @genres = Genre.all
+    @item.situation_ids = @item.item_situations.pluck(:situation_id)
+    @item.post_images_photos = @item.post_images.pluck(:photo)
   end
 
   def update

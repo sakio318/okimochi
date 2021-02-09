@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   has_many :situations, dependent: :destroy, through: :item_situations
   has_many :post_images, dependent: :destroy
   attr_accessor :situation_ids
+  attr_accessor :post_images_photos
 
   # バリデーション設定
   # シチュエーションバリデのみ下部に別途定義
@@ -18,8 +19,10 @@ class Item < ApplicationRecord
     validates :introduction
   end
     validate :situation_valid?
-    
-    
+    validate :post_images_photos_valid?
+
+
+
 # 検索アクション
 # 検索ワードとシチュエーションが空で検索されることを想定した条件分岐
   def Item.search_for(search,scene)
@@ -46,6 +49,11 @@ class Item < ApplicationRecord
   def situation_valid?
     if situation_ids.blank?
       errors.add(:situation_ids)
+    end
+  end
+  def post_images_photos_valid?
+    if post_images_photos.count == 1
+      errors.add(:post_images_photos)
     end
   end
 

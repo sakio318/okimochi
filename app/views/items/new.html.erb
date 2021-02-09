@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-sm-12 col-md-3">
+    <!--サイドバーレンダリング-->
+    <div class=" col-12 col-md-3 col-lg-3">
       <%= render 'users/sidebar', user:@user %>
     </div>
-    <div class="col-lg-9 col-sm-12 col-md-9">
+    <div class=" col-12 col-md-9 col-lg-9">
       <!--エラーメッセージレンダリング-->
       <div class="error_messages">
         <%= render 'layouts/error_messages', model: @new_item %>
       </div>
       <h4>新規投稿画面</h4>
-        <%= form_with model: @new_item, local:true do |f| %>
+      <%= form_with model: @new_item, local:true do |f| %>
         <h6>商品名</h6>
         <%= f.text_field :name %>
         <h6>お店の名前</h6>
@@ -23,18 +24,20 @@
         <%= f.collection_select(:genre_id, @genres, :id, :name) %>
 
         <h6>シチュエーション</h6>
-        <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation, include_hidden: false %>
+        <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation,include_hidden: false %>
 
         <h6>画像</h6>
-        <%= f.attachment_field :post_images_photos, multiple: true,include_hidden: false %>
-        <%= f.submit '投稿する' %>
-        <% end %>
+        <%= f.attachment_field :post_images_photos, multiple: true %>
+        <%= f.submit '投稿する',class:"btn btn-outline-warning" %>
+      <% end %>
+      <!--プレヴュー-->
+      <img id="preview_0" style="width:20%;">
+      <img id="preview_1" style="width:20%;">
+      <img id="preview_2" style="width:20%;">
+    </div>
   </div>
 </div>
 
-<img id="preview_0" style="width:15%;">
-<img id="preview_1" style="width:15%;">
-<img id="preview_2" style="width:15%;">
 
 
 <script>

@@ -1,10 +1,9 @@
-<p>コメント件数：<%= comments.count %></p>
 <% comments.each do |comment| %>
   <div id="comment-<%= comment.id %>">
-       <div class="flex-container m-3">
-        <div class="row">
-          <%= attachment_image_tag comment.user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %>
-         <div class="flex-column">
+    <div class="flex-container m-3">
+      <div class="row">
+        <%= attachment_image_tag comment.user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %>
+        <div class="flex-column">
           <div class="ml-2"><%= link_to "@#{comment.user.name}", user_path(comment.user_id) %></div>
           <div class="ml-2"><%= comment.body %></div>
           <div class="ml-2"><div id="star-rate-<%= comment.id %>"></div>
@@ -17,22 +16,21 @@
               <% end %>
             </div>
           <% end %>
-         </div>
         </div>
       </div>
-
-      <!--星評価-->
-        <script>
-          $('#star-rate-<%= comment.id %>').raty({
-             size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= comment.rate %>
-          });
-        </script>
+    </div>
+   <!--星評価-->
+    <script>
+      $('#star-rate-<%= comment.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= comment.rate %>
+      });
+    </script>
   </div>
 <% end %>
 

@@ -1,37 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-sm-12 col-md-3">
-      <div class="flex-column">
-        <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %></div>
-        <h6><i class="far fa-user"></i>ユーザー名</h6>
-        <div class=".user_show_side"><%= @user.name %></div>
-        <div class="row">
-          <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介</h6>
-          <div class="user_show_side"><%= @user.introduction %></div>
-        </div>
-        <div>
-            <% if @user.id == current_user.id %>
-              <%= link_to edit_user_path(@user.id), class:"btn btn-outline-success" do %>
-               <h6><i class="fas fa-user-cog"></i>編集</h6>
-              <% end %>
-              <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#useredit">-->
-              <!--  <h6><i class="fas fa-user-cog"></i>編集</h6>-->
-              <!--</button>-->
+    <div class="col-12 col-md-3">
+      <div class="mt-30">
+        <div class="flex-column">
+          <div><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %></div>
+          <h6><i class="far fa-user"></i>ユーザー名
+          <div class="user_show_side"><%= @user.name %></div></h6>
+          <div class="flex-row">
+            <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介
+            <div class="user_show_side"><%= @user.introduction %></div></h6>
+          </div>
+          <% if @user.id == current_user.id %>
+            <%= link_to edit_user_path(@user.id), class:"btn btn-outline-success" do %>
+              <h6><i class="fas fa-user-cog"></i>編集</h6>
             <% end %>
-            <!--ユーザー情報編集モーダル画面レンダリング-->
-            <%#= render 'edit', user: @user %>
-            <%= link_to favo_index_user_path(@user.id), class:"btn btn-outline-success" do %>
-              <h6><i class="far fa-heart"></i>一覧</h6>
-            <% end %>
+          <% end %>
+          <%= link_to favo_index_user_path(@user.id), class:"btn btn-outline-success" do %>
+            <h6><i class="far fa-heart"></i>一覧</h6>
+          <% end %>
         </div>
       </div>
     </div>
     <!--自分の投稿一覧レンダリング-->
-    <div class="col-lg-9 col-sm-12 col-md-9">
-      <h4><i class="fas fa-gifts"></i><%= @user.name %>さんの　おきもち</h4>
+    <div class="col-12 col-md-9">
+      <h4><i class="far fa-user"></i>マイページ</h4>
+      <h4 class="mt-20"><i class="fas fa-gifts"></i><%= @user.name %>さんの　おきもち</h4>
+      <div class="index_item">
         <%= render 'items/index', items:@items %>
+      </div>
       <!--kaminar-->
       <%= paginate @items %>
     </div>
   </div>
- </div>
+</div>

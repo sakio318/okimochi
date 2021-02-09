@@ -1,11 +1,19 @@
 <div class="sidebar">
-  <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %><br>
-  <h6>アカウント名</h6>
-  <%= link_to user_path(user.id) do %>
-  <%= user.name %>
-  <% end %>
-  <p class="new_post">
-    <!--新規投稿-->
-    <%= link_to 'おきもちを投稿する' , new_item_path, class:"btn btn-sm btn-outline-primary" %>
-  </p>
+  <ul>
+    <li>
+      <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "logo (3).jpg", size: "100x100" %>
+    </li>
+    <li>
+      <h6>アカウント名</h6>
+    </li>
+    <li>
+      <%= link_to user_path(user.id) do %>
+      <%= user.name %>
+      <% end %>
+    </li>
+    <li>
+      <!--新規投稿-->
+      <%= link_to 'おきもちを投稿する' , new_item_path, class:"btn btn-sm btn-outline-primary" %>
+    </li>
+  </ul>
 </div>

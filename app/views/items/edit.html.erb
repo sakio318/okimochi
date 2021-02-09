@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-sm-12 col-md-3">
+    <div class=" col-12 col-md-3 col-lg-3">
       <%= render 'users/sidebar', user:@user %>
+      <%= link_to '詳細画面に戻る',item_path(@item),class:"btn btn-outline-secondary" %>
     </div>
-    <div class="col-lg-9 col-sm-12 col-md-9">
+    <div class="col-12 col-md-9 col-lg-9">
       <div class="error_messages">
         <%= render 'layouts/error_messages', model: @item %>
       </div>
       <h4>編集画面</h4>
-        <%= form_with model: @item, local:true do |f| %>
+      <%= form_with model: @item, local:true do |f| %>
         <h6>商品名</h6>
         <%= f.text_field :name %>
         <h6>お店の名前</h6>
@@ -22,12 +23,54 @@
         <%= f.collection_select(:genre_id, @genres, :id, :name) %>
 
         <h6>シチュエーション</h6>
-        <%= f.collection_check_boxes :situation_ids, Situation.all, :id, :situation %>
+        <%= f.collection_check_boxes :situation_ids,  Situation.all, :id, :situation %>
 
         <h6>画像</h6>
         <%= f.attachment_field :post_images_photos, multiple: true %>
-        <%= f.submit '投稿する' %>
-        <% end %>
+        <%= f.submit '編集する',class:"btn btn-outline-warning" %>
+      <% end %>
+    <img id="preview_0" style="width:20%;">
+    <img id="preview_1" style="width:20%;">
+    <img id="preview_2" style="width:20%;">
   </div>
 </div>
+
+<script>
+$('#item_post_images_photos').on('change', function (e) {
+
+    if(e.target.files.length > 3){
+
+      alert('一度に投稿できるのは3枚までです。');
+      // 五枚以上の画像を選択していた場合、選択したファイルをリセット。
+      $('#item_post_images_photos').val = "";
+
+      // 以前の画像のプレビューが残っていた場合は、
+      // まだ画像選択できていると勘違いを誘発するため初期化。
+      for( let i = 0; i < 3; i++) {
+        $(`#preview_${i}`).attr('src', "");
+      }
+
+    }else{
+      let reader = new Array(3);
+
+      // 画像選択を二回した時、一回目より数が少なかったりすると画面上に残るので初期化
+      for( let i = 0; i < 3; i++) {
+        $(`#preview_${i}`).attr('src', "");
+      }
+
+      for(let i = 0; i < e.target.files.length; i++) {
+        reader[i] = new FileReader();
+        reader[i].onload = finisher(i,e);
+        reader[i].readAsDataURL(e.target.files[i]);
+
+        // onloadは別関数で準備しないとfor文内では使用できないので、関数を準備。
+        function finisher(i,e){
+          return function(e){
+          $(`#preview_${i}`).attr('src', e.target.result);
+          }
+        }
+      }
+   }
+});
+</script>
 

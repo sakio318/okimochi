@@ -4,16 +4,16 @@
       <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "logo (3).jpg",
           size: "80x80" %>
     </div>
-  <div>
     <div>
-      <h6><i class="fas fa-user"></i>アカウント名</h6>
-      <%= link_to user_path(user.id) do %>
-        <div><%= user.name %></div>
-      <% end %>
-    </div>
-    <div>
-      <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介</h6>
-      <div><%= user.introduction %></div>
+      <div>
+        <h6><i class="fas fa-user"></i>アカウント名
+        <%= link_to user_path(user.id) do %>
+          <div class=ml-2><%= user.name %></div></h6>
+        <% end %>
+      </div>
+      <div>
+        <h6><i class="fas fa-chalkboard-teacher"></i>自己紹介
+      <div><%= user.introduction %></div></h6>
     </div>
   </div>
 </div>

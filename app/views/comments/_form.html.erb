@@ -1,14 +1,9 @@
-
- <%= form_with(model: [item, comment], method: :post) do |f| %>
-     <div id="error_message">
-       <%= render 'layouts/error_messages',model: comment %>
-       <!--<ul>-->
-       <!--  <%# model.errors.full_messages.each do |message| %>-->
-       <!--  <li><%#= message %></li>-->
-       <!--  <%# end %>-->
-       <!--</ul>-->
-     </div>
-   <%= f.text_area :body,placeholder:"例　とっても喜んでもらえました！", size: "40x3"  %>
+<%= form_with(model: [item, comment], method: :post) do |f| %>
+  <!--エラーメッセージレンダリング-->
+  <div id="error_message">
+    <%= render 'layouts/error_messages',model: comment %>
+  </div>
+  <%= f.text_area :body,placeholder:"例　とっても喜んでもらえました！", size: "40x3"  %>
   <div class="form-group row" id="star">
     <%= f.label :rate,'評価',class:'col-form-label' %>
     <%= f.hidden_field :rate, id: :review_star %>
@@ -21,6 +16,7 @@
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
       scoreName: 'comment[rate]',
+      score: 0,
       half: true,
     });
   </script>

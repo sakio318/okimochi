@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
       render 'error' and return
     else
        @comments = @item.comments.order(create_at: :desc)
+       @comment = Comment.new
       render 'create' and return
-      render 'error' and return
     end
 
   end

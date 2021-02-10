@@ -3,14 +3,14 @@
     <div class="container">
       <div class="row">
         <!--いいね機能レンダリング-->
-        <div class"col-2 col-md-1 col-lg-1">
+        <div class"col-2 col-md-1">
           <% if item.user_id != current_user.id %>
             <div class="favorite-btn_<%= item.id %>">
               <%= render 'favorites/favo', item: item %>
             </div>
           <% end %>
         </div>
-        <div class="col-10 col-md-4 col-lg-3">
+        <div class="col-10 col-md-4">
           <% if item.post_images.present? %>
             <% item.post_images.first(1).each do |image| %>
               <%= link_to item_path(item) do %>
@@ -19,7 +19,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class"col-10 col-md-4 col-lg-5">
+        <div class"col-10 col-md-4">
           <div class="flex-column">
             <div class="flex-row">
               <h6 class="ml-1"><i class="far fa-user"></i>

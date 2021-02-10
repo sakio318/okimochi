@@ -1,35 +1,31 @@
 <div class="container">
   <div class="row">
-      <div class="col-lg-10 offset-1 col-12">
-        <div class="top_body">
-        <div class="top-view"></div>
+    <div class="col-lg-10 offset-1 col-12">
+      <div class="top_body">
+        <img src="assets/topimage1.jpg" class="img-fluid">
         <div class="welcom-m">
-          <h2>ようこそ　おきもちへ！<br>
+        <h2>ようこそ　おきもちへ！<br>
           あなたの日頃のおきもちを<br>みなさんとシェアしませんか</h2>
-          </div>
-          <div class="ranking-m">
-            <h4>このサイト内で評価の高いおきもちです！！</h4>
-          </div>
-
-          <% @items.each.with_index(1) do |item,i| %>
-          <div class="b-flex">
-            <div class="justify-content-md-center">
-              <div class="p-2">
-            <% if item.post_images.present? %>
-              <% item.post_images.first(1).each do |image| %>
-                <%= attachment_image_tag image, :photo, size: "200x200" %>
-              <% end %>
-             <% end %><br>
-             <ul>
-               <li><h6><i class="fas fa-crown"></i>第<%= i %>位</h6></li>
-               <li><h6>製品名<p><%= item.name %></p></h6></li>
-              </ul>
-              </div>
         </div>
+        <div class="ranking-m">
+          <h4>このサイト内で評価の高いおきもちです！！</h4>
+        </div>
+        <% @items.each.with_index(1) do |item,i| %>
+          <div class="justify-content-md-center">
+            <div class="p-2">
+              <% if item.post_images.present? %>
+                <% item.post_images.first(1).each do |image| %>
+                  <%= attachment_image_tag image, :photo, size: "200x200" %>
+                <% end %>
+              <% end %><br>
+              <ul>
+                <li><h6><i class="fas fa-crown"></i>第<%= i %>位</h6></li>
+                <li><h6>製品名<p><%= item.name %></p></h6></li>
+              </ul>
+            </div>
           </div>
-          <% end %>
-
-          </div>
+        <% end %>
       </div>
+    </div>
   </div>
-  </div>
+</div>

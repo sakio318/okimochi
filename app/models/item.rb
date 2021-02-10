@@ -6,9 +6,9 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :item_situations, dependent: :destroy
   has_many :situations, dependent: :destroy, through: :item_situations
-  has_many :post_images, dependent: :destroy
+  has_many :post_images, dependent: :destroy, inverse_of: :item
   attr_accessor :situation_ids
-  attr_accessor :post_images_photos
+  # attr_accessor :post_images_photos
 
   # バリデーション設定
   # シチュエーションバリデのみ下部に別途定義
@@ -51,10 +51,10 @@ class Item < ApplicationRecord
       errors.add(:situation_ids)
     end
   end
-  def post_images_photos_valid?
-    if post_images_photos.count == 1
-      errors.add(:post_images_photos)
-    end
-  end
+  # def post_images_photos_valid?
+  #   if post_images_photos.size == 1
+  #     errors.add(:post_images_photos)
+  #   end
+  # end
 
 end

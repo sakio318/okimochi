@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
     <!--サイドバーレンダリング-->
-    <div class=" col-12 col-md-3 col-lg-3">
+    <div class=" col-12 col-md-3">
+      
       <div class="sidebar">
        <%= render 'users/sidebar', user:@user %>
       </div>
     </div>
-    <div class=" col-12 col-md-9 col-lg-9">
+    <div class=" col-12 col-md-9">
       <h4>おきもちの詳細情報</h4>
       <!--いいね機能レンダリング-->
       <% if @item.user_id != current_user.id %>
@@ -71,7 +72,6 @@
         </div>
         <!--ここからコメント評価フォーム-->
         <div class="show_comment_form">
-          <h6><i class="fas fa-comment"></i>よろしければコメントと★評価をお寄せください</h6>
           <div id="form">
             <%= render 'comments/form', item: @item,comment: @comment %>
           </div>

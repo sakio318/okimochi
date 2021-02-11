@@ -19,8 +19,6 @@ class Item < ApplicationRecord
   end
     validate :situation_valid?
 
-
-
 # 検索アクション
 # 検索ワードとシチュエーションが空で検索されることを想定した条件分岐
   def Item.search_for(search,scene)

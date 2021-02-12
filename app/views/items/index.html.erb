@@ -5,21 +5,20 @@
       <!--サイドバーレンダリング-->
         <%= render 'users/sidebar', user:@user %>
     </div>
-    <div class=" col-12 col-md-9">
-
-        <h2 class="item_topm">
-          <i class="fas fa-gifts"></i>
-          みんなのおきもち
-        </h2>
-          <!--検索機能-->
-        <div class="search_form">
-          <%= render 'items/search' %>
-        </div>
-        <!--投稿一覧レンダリング-->
-        <div class="index_item">
-          <%= render 'items/index', items:@items %>
-        </div>
-        <%= paginate @items %>
+    <div class="col-12 col-md-7 offset-md-1">
+      <h2 class="item_topm">
+      <i class="fas fa-gifts"></i>
+        みんなのおきもち
+      </h2>
+        <!--検索機能-->
+      <div class="search_form">
+        <%= render 'items/search' %>
       </div>
+        <!--投稿一覧レンダリング-->
+      <div class="index_item">
+        <%= render 'items/index', items:@items %>
+      </div>
+      <h6><%= paginate @items %></h6>
+    </div>
   </div>
 </div>

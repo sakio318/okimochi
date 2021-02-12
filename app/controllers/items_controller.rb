@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
     @new_item = Item.new(item_params)
     @new_item.user_id = current_user.id
+    # シチュエーションの複数保存
     if @new_item.save
       item_params[:situation_ids].each do |sid|
         @item_situation = ItemSituation.new({
@@ -62,8 +63,10 @@ class ItemsController < ApplicationController
     redirect_to items_path,notice: '削除されました'
   end
 
+  # 検索アクション
   def search
     @scene = params[:scene_ids]
+    # シーンを選択していたらint型に変換
     if @scene.present?
       @scene.map!(&:to_i)
     elsif @scene.blank?

@@ -1,6 +1,6 @@
-<h6><i class="fas fa-gift"></i>贈るシチュエーションに合わせて検索ができます！</h6>
+<h6><i class="fas fa-gift"></i>贈るシチュエーションや商品名で検索ができます！</h6>
 <%= form_with url: search_path, method: :get, local:true do |f| %>
-  <%= f.collection_check_boxes :scene_ids, Situation.all, :id, :situation,include_hidden: false %><br>
+  <%= f.collection_check_boxes :scene_ids, Situation.all, :id, :situation,include_hidden: false, class:'btn' %><br>
   <%= f.hidden_field :option,  value: "おきもち" %>
   <%= f.text_field :search, placeholder:"例　チョコ" %>
 

@@ -9,5 +9,11 @@ RSpec.describe User,"userモデルに関するテスト", type: :model do
     end
   end
   describe'バリデーションのテスト' do
-    it
+    it"名前がない場合は無効である"
+    it"メールアドレスがない場合は無効である"
+    it"パスワードがない場合は無効である"
+    it""
+    it""
+    it""
+    it""
 end

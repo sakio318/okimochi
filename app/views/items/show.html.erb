@@ -2,13 +2,12 @@
   <div class="row">
     <!--サイドバーレンダリング-->
     <div class=" col-12 col-md-3">
-      
       <div class="sidebar">
        <%= render 'users/sidebar', user:@user %>
       </div>
     </div>
     <div class=" col-12 col-md-9">
-      <h4>おきもちの詳細情報</h4>
+      <h2>おきもちの詳細情報</h2>
       <!--いいね機能レンダリング-->
       <% if @item.user_id != current_user.id %>
         <div class="favorite-btn_<%= @item.id %>">

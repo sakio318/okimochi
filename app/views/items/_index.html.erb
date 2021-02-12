@@ -2,14 +2,7 @@
   <div class="each_item">
     <div class="container">
       <div class="row">
-        <!--いいね機能レンダリング-->
-        <div class"col-2 col-md-1">
-          <% if item.user_id != current_user.id %>
-            <div class="favorite-btn_<%= item.id %>">
-              <%= render 'favorites/favo', item: item %>
-            </div>
-          <% end %>
-        </div>
+
         <div class="col-10 col-md-4">
           <% if item.post_images.present? %>
             <% item.post_images.first(1).each do |image| %>
@@ -65,6 +58,14 @@
                   </strong></h6>
                 </div>
           </div>
+        </div>
+        <!--いいね機能レンダリング-->
+        <div class"col-2 col-md-1">
+          <% if item.user_id != current_user.id %>
+            <div class="favorite-btn_<%= item.id %>">
+              <%= render 'favorites/favo', item: item %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

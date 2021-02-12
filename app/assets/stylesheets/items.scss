@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sidebar{
-  margin-top: 60px;
-}
+// .sidebar{
+//   margin-top: 60px;
+// }
 .new_post{
   text-align: left;
   margin: 20px;
@@ -28,6 +28,9 @@ margin-top: 20px;
 strong{
   margin-left: 5px;
 }
+.btn{
+  margin: 2px;
+}
 // 検索結果
 .search_index{
   margin-top: 40px;
@@ -46,3 +49,4 @@ strong{
 .form_submit{
 
 }
+

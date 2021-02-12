@@ -8,7 +8,7 @@
 
 Situation.create!(
   [
-    { situation: 'お手土産'},
+    { situation: ' お手土産 '},
     { situation: 'お歳暮'},
     { situation: 'バレンタイン'},
     { situation: 'ホワイトデー'},

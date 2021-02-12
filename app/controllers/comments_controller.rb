@@ -7,11 +7,10 @@ class CommentsController < ApplicationController
     unless @comment.save
       render 'error' and return
     else
-       @comments = @item.comments.order(create_at: :desc)
+       @comments = @item.comments.order(created_at: :desc)
        @comment = Comment.new
       render 'create' and return
     end
-
   end
 
   def destroy

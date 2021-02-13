@@ -15,10 +15,8 @@
 20代～40代の男女
 
 ### 主な利用シーン
-*親族へのお歳暮、贈り物
-*大切な人と会う時のちょっとした手土産
-*取引先様への贈り物
-*自分へのご褒美
+*人にお勧めしたい贈り物をみつけた時
+*誰かへの贈り物で悩んだとき
 
 ## 設計書
 *WBSシート　https://docs.google.com/spreadsheets/d/1KsfYXngi_1H4orXHen1Qpg_ydBb6x5C1VNHHv7EGp98/edit?usp=sharing

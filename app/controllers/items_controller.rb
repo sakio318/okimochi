@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @comment = Comment.new
-    @comments = @item.comments.includes(:user).reverse_order.page(params[:page]).per(3)
+    @comments = @item.comments.includes(:user).reverse_order
     @user = User.find(current_user.id)
   end
 

@@ -1,3 +1,4 @@
+$("#js-table-comment").html("<%= j(render 'comments',{ comments: @comments}) %>")
 $("#form").html("<%= j(render 'form',{item: @item ,comment: @comment}) %>")
 $("#error_message").html("<%= j(render 'layouts/error_messages', {model: @comment}) %>")
 

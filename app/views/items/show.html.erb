@@ -70,15 +70,17 @@
           </div>
         </div>
         <!--ここからコメント評価フォーム-->
-        <% unless @item.commented_by?(current_user) %>
-        <div class="show_comment_form">
-          <div id="form">
-            <%= render 'comments/form', item: @item,comment: @comment %>
+        <div id="js-table-comment">
+          <% unless @item.commented_by?(current_user) %>
+          <div class="show_comment_form">
+            <div id="form">
+              <%= render 'comments/form', item: @item,comment: @comment %>
+            </div>
           </div>
+          <% end %>
+         <!--コメント評価の表示 -->
+          <%= render 'comments/comments', comments: @comments %>
         </div>
-        <% end %>
-       <!--コメント評価の表示 -->
-        <%= render 'comments/comments', comments: @comments %>
       </div>
     </div>
   </div>

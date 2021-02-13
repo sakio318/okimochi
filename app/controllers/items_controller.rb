@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
         })
         @item_situation.save
       end
-      redirect_to user_path(current_user),notice: '投稿されました'
+      redirect_to item_path(@new_item),notice: '投稿されました'
     else
       render :new
     end

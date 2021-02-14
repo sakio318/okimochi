@@ -14,9 +14,10 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :shop_name
-    validates :packing
     validates :introduction
   end
+  # ブーリアン型とカスタムバリデーション
+    validates :packing, inclusion: {in: [true, false]}
     validate :situation_valid?
 
 # 検索アクション
@@ -38,11 +39,11 @@ class Item < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def commented_by?(user)
     comments.where(user_id: user.id).exists?
   end
-  
+
   accepts_nested_attributes_for :item_situations, allow_destroy: true
   accepts_attachments_for :post_images, attachment: :photo
 

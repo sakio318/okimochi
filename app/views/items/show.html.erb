@@ -18,7 +18,7 @@
       <div class="show_item">
         <% if @item.post_images.present? %>
           <% @item.post_images.each do |image| %>
-            <%= attachment_image_tag image, :photo, size: "200x200" %>
+            <%= attachment_image_tag image, :photo,size: "200x200" %>
           <% end %>
         <% end %>
         <div class="show_item_list">

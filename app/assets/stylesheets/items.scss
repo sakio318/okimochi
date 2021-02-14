@@ -46,7 +46,10 @@ strong{
 .show_comment_form{
   margin: 30px 0px;
 }
-.form_submit{
-
+.check_box{
+  width: 70%;
+  flex-wrap: wrap;
 }
-
+label{
+  padding-right: 0.5em;
+}

@@ -38,3 +38,4 @@ https://docs.google.com/spreadsheets/d/1STc7iMKOB4MzEzUhAMUqDGcLvIZed7gVTJcpDnET
 
 ## 使用素材
 -ロゴメーカー https://logo-maker.stores.jp/
+-フリー素材　https://www.pexels.com/ja-jp/

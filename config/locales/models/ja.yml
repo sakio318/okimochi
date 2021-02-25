@@ -12,13 +12,13 @@ ja:
       item_situations:
         situation: シチュエーション
         item_id: 投稿ＩＤ
-        situation_ids: シチュエーション
       item:
         name: 商品名
         shop_name: お店の名前
         packing: 包装
         introduction: 商品について
         user_id: アカウント名ＩＤ
+        situation_ids: シチュエーションを入力してください
       genre:
         genre_id: ジャンルＩＤ
       post_images:

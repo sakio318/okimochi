@@ -10,7 +10,6 @@ class Item < ApplicationRecord
   attr_accessor :situation_ids
 
   # バリデーション設定
-  # シチュエーションバリデのみ下部に別途定義
   with_options presence: true do
     validates :name
     validates :shop_name
@@ -50,7 +49,7 @@ class Item < ApplicationRecord
   private
   def situation_valid?
     if situation_ids.blank?
-      errors.add(:situation_ids)
+      errors.add(:situation_ids,'')
     end
   end
 end

@@ -7,7 +7,9 @@ class User < ApplicationRecord
   attachment :image
 
   validates :name ,presence: true, length: {minimum: 2,maximum: 15}
+  validates :email,presence: true, length: {maximum: 255},uniqueness: true
   validates :introduction, length: {maximum: 50 }
+  validates :encrypted_password,presence: true
 
 # ゲストログイン機能
   def self.guest

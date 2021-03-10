@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Item,"itemモデルに関するテスト", type: :model do
   genre = FactoryBot.create(:genre)
   user = FactoryBot.create(:user)
-  post_image = FactoryBot.create(:post_image)
   describe'実際に保存してみる' do
     it "有効な新規登録の場合は保存されるか" do
        expect{FactoryBot.build(:item, :genre => genre, :user => user).to be_valid }
@@ -48,12 +47,6 @@ RSpec.describe Item,"itemモデルに関するテスト", type: :model do
     end
     it '255文字以下であること: 256文字は×' do
       expect(FactoryBot.build(:item, introduction: "a"*256)).to be_invalid
-    end
-  end
-
-  describe 'user_idカラム' do
-    it '空欄でないこと: 空欄は×' do
-      expect(FactoryBot.build(:item, :genre => genre, :user => user,user_id: nil)).to be_invalid
     end
   end
 
